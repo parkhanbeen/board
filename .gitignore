@@ -23,4 +23,4 @@ local.properties
 # End of https://www.gitignore.io/api/macos,windows,eclipse,intellij,java-web
 target/classes/config/db/db.properties
 src/main/resources/config/db/db.properties
->>>>>>> parkhanbeen
+

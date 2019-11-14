@@ -1,4 +1,10 @@
 // board---
+
+/*$(document).ready(function(){
+	$('head').append('<link rel="stylesheet" href="/dist/css/skins/skin-blue.min.css?after" type="text/css" />');
+});*/
+
+/* jshint esversion: 6 */
 var word;
 var search;
  $("#write").click(function(){

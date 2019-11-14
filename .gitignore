@@ -1,3 +1,20 @@
-/target/
+# Created by https://www.gitignore.io/api/macos,windows,eclipse,intellij,java-web
+# Edit at https://www.gitignore.io/?templates=macos,windows,eclipse,intellij,java-web
 
-db.properties
+### Eclipse ###
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+
+
+# End of https://www.gitignore.io/api/macos,windows,eclipse,intellij,java-web
+target/classes/config/db/db.properties
+src/main/resources/config/db/db.properties

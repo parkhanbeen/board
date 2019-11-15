@@ -1,11 +1,7 @@
 # Created by https://www.gitignore.io/api/macos,windows,eclipse,intellij,java-web
 # Edit at https://www.gitignore.io/?templates=macos,windows,eclipse,intellij,java-web
 
-<<<<<<< HEAD
 
-db.properties
-
-=======
 ### Eclipse ###
 .metadata
 bin/
@@ -24,3 +20,4 @@ local.properties
 target/classes/config/db/db.properties
 src/main/resources/config/db/db.properties
 
+/target/

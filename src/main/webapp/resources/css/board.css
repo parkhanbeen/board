@@ -55,22 +55,25 @@ body {
 
 .write_grop{
 	/*border:1px solid black;*/
-	margin-bottom:10%;
-	width : 80%;
+	margin-bottom:2%;
+	width : 95%;
 }
 .write_grop > input {
 	width:50%;
-	height:50px;
+	height:30px;
 }
 
 .write_grop > input,textarea {
-	width:60%;
-	height:50px;
+	width:70%;
+	height:30px;
 	float:right;
+	
 }
 
 #wt_content{
 	height:185px;
+	margin-left: 40%;
+    margin-top: -43px;
 }
 
 .write_btn{

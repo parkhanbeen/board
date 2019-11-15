@@ -32,8 +32,11 @@ public class BoardServiceImpl implements BoardService{
 		 mapper.writeBoard(board);
 	}
 	
+	public void viewCnt(int no){
+		mapper.detailViewCnt(no);	
+	}
+	
 	public Board selectDatil(int no){
-		mapper.detailViewCnt(no);
 		return mapper.selectDatil(no);
 	}
 	

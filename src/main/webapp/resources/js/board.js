@@ -1,8 +1,13 @@
 // board---
 
-/*$(document).ready(function(){
-	$('head').append('<link rel="stylesheet" href="/dist/css/skins/skin-blue.min.css?after" type="text/css" />');
-});*/
+$(document).ready(function(){
+	$('.summernote').summernote({
+		placeholder: 'Write contents',
+        height: 400,
+        minHeight: null,             // set minimum height of editor
+        maxHeight: null,             // set maximum height of editor
+      });
+});
 
 /* jshint esversion: 6 */
 var word;
@@ -20,6 +25,7 @@ var search;
 	    word = $(this).val();
 	    $("#board_tb > tbody > tr:gt(0)").remove();
 	    $("#board_paging").remove();
+	    
 	    $.ajax({
 	        type:"post",
 	        url: "/board/search.do",
@@ -127,6 +133,16 @@ var search;
 	});
 	$(document).on("click", "#detail_delete_btn", function () {
 		location.href="/board/delete.do?no=" + $("#detail_update_btn").data("no") + "&pageNo=" + $(this).data("pageno") ; 
+	});
+	
+	$(document).on("click","#detail_btn" , function(){
+		$.ajax({
+			url: "/board/viewCnt/" + $(this).data("no") ,
+			type:"Get",
+			success:function(data){
+				alert("success = " + data);
+			}	
+		});
 	});
 
 	

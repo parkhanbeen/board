@@ -6,16 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <html>
-<%-- <%@ include file="../include/head.jsp" %> --%>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
-  <!-- Main Header -->
-<%--   <%@ include file="../include/main_header.jsp" %> --%>
-  <!-- Left side column. contains the logo and sidebar -->
-<%--   <%@ include file="../include/left_column.jsp" %> --%>
-
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -62,19 +54,9 @@
 </div>
 
     </section>
-    <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
-
-  <!-- Main Footer -->
-<%--   <%@ include file="../include/main_footer.jsp" %> --%>
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-  immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
-<!-- ./wrapper -->
 
-<%-- <%@ include file="../include/plugin_js.jsp" %> --%>
 </body>
 </html>

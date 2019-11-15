@@ -12,6 +12,8 @@ public interface BoardService {
 	
 	Board selectDatil(int no);
 	
+	void viewCnt(int no);
+	
 	void updateBoard(Board board);
 	
 	void deleteBoard(int no);

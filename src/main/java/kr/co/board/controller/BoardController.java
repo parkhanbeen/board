@@ -5,10 +5,13 @@ import java.util.Map;
 import kr.co.board.repository.vo.Board;
 import kr.co.board.service.BoardService;
 
+import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
@@ -57,6 +60,12 @@ public class BoardController {
 	public String write(Board board){
 		service.writeBoard(board);
 		return UrlBasedViewResolver.REDIRECT_URL_PREFIX + "list.do";
+	}
+	
+	// 조회수 
+	@RequestMapping(value="viewCnt/{no}"  , method = RequestMethod.GET )
+	public void viewCnt(@PathVariable("no") int no) throws Exception{		
+		service.viewCnt(no);		
 	}
 	
 	// 상세페이지 이동

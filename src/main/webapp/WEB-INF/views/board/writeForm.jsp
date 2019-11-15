@@ -9,13 +9,6 @@
 <%@ include file="../include/head.jsp" %>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
-  <!-- Main Header -->
-  <%-- <%@ include file="../include/main_header.jsp" %> --%>
-  <!-- Left side column. contains the logo and sidebar -->
-  <%-- <%@ include file="../include/left_column.jsp" %> --%>
-
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -46,7 +39,9 @@
             <div class="write_grop">
                 <span class="write_ft">내용</span>
                 <!-- <input id="wt_content" type="text" name="content" /> -->
-                <textarea style="resize: none;" id="wt_content"  name="content"></textarea>
+                     <textarea style="resize: none;" class="summernote" id="wt_content"  name="content"></textarea>
+                
+               <!-- <textarea name="content" class="summernote" id="summernote" ></textarea> -->
             </div>
         </div>
         <div>
@@ -58,19 +53,10 @@
 </div>
 
     </section>
-    <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
 
-  <!-- Main Footer -->
-  <%-- <%@ include file="../include/main_footer.jsp" %> --%>
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-  immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
-<!-- ./wrapper -->
 
-<%-- <%@ include file="../include/plugin_js.jsp" %> --%>
 </body>
 </html>

@@ -9,12 +9,6 @@
 <%@ include file="../include/head.jsp" %>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
-  <!-- Main Header -->
-  <%-- <%@ include file="../include/main_header.jsp" %> --%>
-  <!-- Left side column. contains the logo and sidebar -->
-  <%-- <%@ include file="../include/left_column.jsp" %> --%>
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -68,17 +62,8 @@
 </div>
 
     </section>
-    <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
-
-  <!-- Main Footer -->
-  <%-- <%@ include file="../include/main_footer.jsp" %> --%>
-  <!-- /.control-sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
-<!-- ./wrapper -->
-
-<%-- <%@ include file="../include/plugin_js.jsp" %> --%>
 </body>
 </html>

@@ -42,6 +42,7 @@ public class BoardController {
 		return "board/board.tiles";  
 	}	
 	
+	// 검색
 	@RequestMapping("search.do")
 	@ResponseBody
 	public Map<String,Object> search(Board board){

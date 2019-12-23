@@ -1,2 +1,2 @@
 # board
-spring 게시판 
+spring을 이용한 게시판 

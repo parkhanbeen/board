@@ -363,3 +363,7 @@ ul > .paginate_button{
 .skin-blue.layout-top-nav .main-header>.logo:hover {
 	background-color: #3b8ab8
 }
+
+#boardText{
+	text-overflow: ellipsis;
+}

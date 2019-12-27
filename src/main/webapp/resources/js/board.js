@@ -135,13 +135,12 @@ var search;
 		location.href="/board/delete.do?no=" + $("#detail_update_btn").data("no") + "&pageNo=" + $(this).data("pageno") ; 
 	});
 	
+	
+	// 게시글 클릭시 조회수 증가
 	$(document).on("click","#detail_btn" , function(){
 		$.ajax({
 			url: "/board/viewCnt/" + $(this).data("no") ,
-			type:"Get",
-			success:function(data){
-				alert("success = " + data);
-			}	
+			type:"Get"
 		});
 	});
 

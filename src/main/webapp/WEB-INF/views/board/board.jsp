@@ -60,7 +60,7 @@
                 <td>${l.no}</td>
                 <td><a data-no="${l.no}" data-pageno="${l.pageNo }" id="detail_btn" href="/board/detail.do?no=${l.no}&pageNo=${b.pageNo}">${l.title }</a></td>
                 <td>${l.writer }</td>
-                <td>${l.content }</td>
+                <td id="boardText">${l.content }</td>
                 <td>${l.viewCnt }</td>
                 <td><fmt:formatDate value="${l.createDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td><input  type="hidden" name="pageNo">               
             </tr>

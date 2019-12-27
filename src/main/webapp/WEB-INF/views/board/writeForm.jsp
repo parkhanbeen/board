@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <html>
-<%@ include file="../include/head.jsp" %>
+<%-- <%@ include file="../include/head.jsp" %> --%>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
   <div class="content-wrapper">

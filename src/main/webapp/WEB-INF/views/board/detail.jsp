@@ -40,7 +40,7 @@
         </tr>
         <tr>
             <td>내용:</td>
-            <td>${board.content }</td>
+            <td><textarea style="resize: none;" class="summernote" id="detail_content"  name="content">${board.content }</textarea></td>
         </tr>
         <tr>
             <td>작성일:</td>

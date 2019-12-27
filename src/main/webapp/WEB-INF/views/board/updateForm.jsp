@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <html>
-<%@ include file="../include/head.jsp" %>
+<%-- <%@ include file="../include/head.jsp" %> --%>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
   <!-- Content Wrapper. Contains page content -->
@@ -47,7 +47,7 @@
                 <td id="update_content_td">
                     
                     <%-- <input id="update_content" class="update_content" type="text" name="content" placeholder="${board.content }" />   --%>   
-                    <textarea style="resize: none;" id="update_content" class="update_content" name="content" placeholder="${board.content }"></textarea>              
+                    <textarea style="resize: none;" class="summernote" id="update_content"  name="content" data-content="${board.content }"></textarea>              
                 </td>
             </tr>
             <tr>

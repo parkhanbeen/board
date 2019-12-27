@@ -1,12 +1,27 @@
 // board---
 
 $(document).ready(function(){
+	const height = 400;
+	const minHeight = null;
+	const manHeight = null;
+	$('#wt_content').summernote({
+		placeholder : 'write_content',
+		height: height,
+	    minHeight: minHeight,             // set minimum height of editor
+	    maxHeight: manHeight             // set maximum height of editor
+		});
+	$('#update_content').summernote({
+		placeholder : $("#update_content").data("content"),
+		height: height,
+	    minHeight: minHeight,             // set minimum height of editor
+	    maxHeight: manHeight             // set maximum height of editor
+	    });
 	$('.summernote').summernote({
-		placeholder: 'Write contents',
-        height: 400,
-        minHeight: null,             // set minimum height of editor
-        maxHeight: null,             // set maximum height of editor
-      });
+	    height: height,
+		minHeight: minHeight,             // set minimum height of editor
+		maxHeight: manHeight             // set maximum height of editor
+	    });	
+    
 });
 
 /* jshint esversion: 6 */
@@ -17,7 +32,6 @@ var search;
  });
  
  $("#word_content").keyup(function () {
-	    console.log($(this).val());
 	    var resultVal = "";
 	    var paging = "";
 	    var date = new Date();

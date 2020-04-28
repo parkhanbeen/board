@@ -25,15 +25,15 @@ $(document).ready(function(){
 });
 
 /* jshint esversion: 6 */
-var word;
-var search;
- $("#write").click(function(){
+let word;
+let search;
+$("#write").click(function(){
 	 location.href="/board/writeForm.do"; 
  });
- 
+
  $("#word_content").keyup(function () {
-	    var resultVal = "";
-	    var paging = "";
+	 let resultVal = "";
+	 var paging = "";
 	    var date = new Date();
 	    search = $("#select_box").val();
 	    word = $(this).val();
@@ -85,11 +85,11 @@ var search;
  
  Date.prototype.format = function(f) {
 	    if (!this.valueOf()) return " ";
-	 
-	    var weekName = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
-	    var d = this;
-	     
-	    return f.replace(/(yyyy|yy|MM|dd|E|hh|mm|ss|a\/p)/gi, function($1) {
+
+	 const weekName = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+	 const d = this;
+
+	 return f.replace(/(yyyy|yy|MM|dd|E|hh|mm|ss|a\/p)/gi, function($1) {
 	        switch ($1) {
 	            case "yyyy": return d.getFullYear();
 	            case "yy": return (d.getFullYear() % 1000).zf(2);
@@ -135,8 +135,8 @@ var search;
   // detail---
   
   $(document).on("click", "#detail_list_btn", function () {
-		var url = "/board/list.do?pageNo="+ $(this).data("pageno");
-		if(!!$(this).data("search")){
+	  let url = "/board/list.do?pageNo=" + $(this).data("pageno");
+	  if(!!$(this).data("search")){
 			url += "&search=" + $(this).data("search") + "&word=" + $(this).data("word");
 		}
 		location.href = url;

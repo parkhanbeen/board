@@ -13,48 +13,44 @@
      from tb_board
      <if test='search != null'>
      where
-      <choose>           
+      <choose>            
             <when test='search == "all"'>
-                title like '%' + #{word} + '%'
-                or content like '%' + #{word} + '%'                
-                or writer like '%' + #{word} + '%'                
+                title like  concat('%',#{word},'%')
+                or content like concat('%',#{word},'%')                
+                or writer like concat('%',#{word},'%')               
             </when>
             <otherwise>
-                ${search} like '%' + #{word} + '%'
+                ${search} like concat('%',#{word},'%')  
             </otherwise>
         </choose>
         </if> 
   </select>
   
   <select id="selectAllPaging" parameterType="board" resultType="board">
-        SELECT
-            *
-        FROM
+          SELECT T.* FROM
         (
-            SELECT
-                    ROW_NUMBER() OVER(ORDER BY no DESC) AS ROWNUM,
-                    *
-            FROM    tb_board
-            <if test='search != null'>
+            SELECT * FROM  tb_board
+       <if test='search != null'>
             where
-      <choose>           
+       	 <choose>           
             <when test='search == "all"'>
-                title like '%' + #{word} + '%'
-                or content like '%' + #{word} + '%'                
-                or writer like '%' + #{word} + '%'                
+                title like  concat('%',#{word},'%')
+                or content like concat('%',#{word},'%')                
+                or writer like concat('%',#{word},'%')            
             </when>
             <otherwise>
-                ${search} like '%' + #{word} + '%'
+                ${search} like concat('%',#{word},'%')  
             </otherwise>
-        </choose>
-        </if>
+         </choose>
+            order by no asc
+       </if>
         ) T
-        WHERE   T.ROWNUM BETWEEN #{begin} AND #{end}
+        LIMIT 10 OFFSET #{begin}
   </select>
   
   <insert id="writeBoard" parameterType="board">
-    insert into tb_board 
-    values(#{title},#{content},#{writer},0,getdate())
+    insert into tb_board(title,content,writer,view_cnt,create_date) 
+    values(#{title},#{content},#{writer},0,sysdate())
   </insert>
   
   <select id="selectDatil" parameterType="int" resultType="board">

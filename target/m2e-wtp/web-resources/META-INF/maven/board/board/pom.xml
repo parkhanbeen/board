@@ -75,11 +75,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
             <version>2.2.0</version>
         </dependency>
 
-		<dependency>
+		<!-- <dependency>
 		   <groupId>com.microsoft.sqlserver.jdbc</groupId>
 		   <artifactId>sqljdbc</artifactId>
 		   <version>4.0</version>
-		</dependency>	
+		</dependency>	 -->
 			   
 		<dependency>		
 		     <groupId>org.mybatis</groupId>		

@@ -75,20 +75,20 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
             <version>2.2.0</version>
         </dependency>
 
+
 		<!--<dependency>
 		   <groupId>com.microsoft.sqlserver.jdbc</groupId>
 		   <artifactId>sqljdbc</artifactId>
 		   <version>4.0</version>
 		</dependency>	-->
-
-		<!-- Spring DB 관련 -->
-		<!-- MySql -->
-		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.16</version>
-		</dependency>
+		
+		 <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.16</version>
+        </dependency>
+>>>>>>> c72b8f87d4983e144532a2d61b56fca8b24ba86f
 			   
 		<dependency>		
 		     <groupId>org.mybatis</groupId>		

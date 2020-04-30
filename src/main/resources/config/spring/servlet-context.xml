@@ -41,21 +41,12 @@
 	<context:property-placeholder location="classpath:config/db/db.properties" />
 
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
-<<<<<<< HEAD
 	p:driverClassName="${jdbc.mysql.driver}" p:url="${jdbc.mysql.url}"
 	p:username="${jdbc.mysql.username}" p:password="${jdbc.mysql.password}"/>
 
 	<!--		p:driverClassName="${jdbc.mssql.driver}" p:url="${jdbc.mssql.url}"-->
 	<!--		p:username="${jdbc.mssql.username}" p:password="${jdbc.mssql.password}" -->
-=======
-		p:driverClassName="${jdbc.mysql.driver}" p:url="${jdbc.mysql.url}"
-		p:username="${jdbc.mysql.username}" p:password="${jdbc.mysql.password}" />
-		
-	<!--	p:driverClassName="${jdbc.mssql.driver}" p:url="${jdbc.mssql.url}"
-		p:username="${jdbc.mssql.username}" p:password="${jdbc.mssql.password}" -->
->>>>>>> c72b8f87d4983e144532a2d61b56fca8b24ba86f
 
-	<!-- set spring sessionfactory -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="typeAliasesPackage" value="kr.co.board.repository.vo" />

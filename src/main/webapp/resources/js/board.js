@@ -1,6 +1,6 @@
 // board---
 
-$(document).ready(function(){
+$(document).ready(()=>{
 	const height = 400;
 	const minHeight = null;
 	const manHeight = null;
@@ -27,15 +27,13 @@ $(document).ready(function(){
 /* jshint esversion: 6 */
 let word;
 let search;
-$("#write").click(function(){
-	 location.href="/board/writeForm.do"; 
- });
+$("#write").click(()=>{location.href="/board/writeForm.do";});
 
- $("#word_content").keyup(function () {
+ $("#word_content").keyup(()=>{
 	 let resultVal = "";
-	 var paging = "";
-	    var date = new Date();
-	    search = $("#select_box").val();
+	 let paging = "";
+	 const date = new Date();
+	 search = $("#select_box").val();
 	    word = $(this).val();
 	    $("#board_tb > tbody > tr:gt(0)").remove();
 	    $("#board_paging").remove();
@@ -83,7 +81,7 @@ $("#write").click(function(){
 	    })
 	});
  
- Date.prototype.format = function(f) {
+ Date.prototype.format = f => {
 	    if (!this.valueOf()) return " ";
 
 	 const weekName = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
@@ -106,14 +104,17 @@ $("#write").click(function(){
 	    });
 	};
 	 
-	String.prototype.string = function(len){var s = '', i = 0; while (i++ < len) { s += this; } return s;};
-	String.prototype.zf = function(len){return "0".string(len - this.length) + this;};
-	Number.prototype.zf = function(len){return this.toString().zf(len);};
+	String.prototype.string = len => {
+		let s = '', i = 0;
+		while (i++ < len) { s += this; } return s;
+		};
+	String.prototype.zf = len =>  "0".string(len - this.length) + this;
+	Number.prototype.zf = len=>  this.toString().zf(len);
 
 
 
 //  write---
-  $(document).on("click", "#write_btn", function () {
+  $(document).on("click", "#write_btn", () => {
 	    if (!$("#wt_title").val()) {
 	    	swal("제목을 입력해주세요.");
 	        return false;
@@ -127,31 +128,28 @@ $("#write").click(function(){
 	        $("#write_form_sb").submit();
 	    }
 	})
-	$("#write_btn_can").click(function(){
-		location.href="/board/list.do"; 
-	});
+	$("#write_btn_can").click(() => {location.href="/board/list.do";});
   
   
   // detail---
   
-  $(document).on("click", "#detail_list_btn", function () {
+  $(document).on("click", "#detail_list_btn", () => {
 	  let url = "/board/list.do?pageNo=" + $(this).data("pageno");
 	  if(!!$(this).data("search")){
 			url += "&search=" + $(this).data("search") + "&word=" + $(this).data("word");
 		}
 		location.href = url;
-
 	});
-	$(document).on("click", "#detail_update_btn", function () {
+	$(document).on("click", "#detail_update_btn", ()=> {
 		location.href="/board/updateForm.do?no=" + $(this).data("no") +  "&pageNo=" + $("#detail_list_btn").data("pageno") + "&search=" + $("#detail_list_btn").data("search") + "&word=" + $("#detail_list_btn").data("word"); ; 
 	});
-	$(document).on("click", "#detail_delete_btn", function () {
+	$(document).on("click", "#detail_delete_btn", ()=> {
 		location.href="/board/delete.do?no=" + $("#detail_update_btn").data("no") + "&pageNo=" + $(this).data("pageno") ; 
 	});
 	
 	
 	// 게시글 클릭시 조회수 증가
-	$(document).on("click","#detail_btn" , function(){
+	$(document).on("click","#detail_btn" ,()=>{
 		$.ajax({
 			url: "/board/viewCnt/" + $(this).data("no") ,
 			type:"Get"
@@ -160,7 +158,7 @@ $("#write").click(function(){
 
 	
 	// update---
-	$("#update_btn").click(function () {
+	$("#update_btn").click(()=> {
 	    if (!$("#update_title").val()) {
 	        $("#update_title").val($("#update_title").attr("placeholder"));
 	    }
@@ -169,6 +167,6 @@ $("#write").click(function(){
 	    }
 	    $("#update_sb").submit();
 	});
-	$("#update_btn_cancel").click(function(){
+	$("#update_btn_cancel").click(()=>{
 		location.href="/board/detail.do?no=" + $(this).data("no") + "&pageNo=" + $(this).data("pageno") + "&search=" + $(this).data("search") + "&word=" + $(this).data("word"); 
 	});

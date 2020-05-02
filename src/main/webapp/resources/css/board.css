@@ -95,16 +95,18 @@ body {
 	margin-top:5%;
 }
 #detail_table , #update_table{
-	width:80%;
-	margin-bottom:10%;
+	width:82%;
+	/*margin-bottom:10%;*/
+	border-spacing: 10px;
 }
 #detail_table , #update_table > tbody > tr > td{
 	height:40px;
-	font-size:35px;
+	font-size:14px;
 	font-weight:30px;
 } 
 #detail_table > tbody > tr > td:first-child{
 	color:black;
+	margin-right: 15px;
 } 
 #detail_table , #update_table > tbody > tr > td:nth-child(2){
     color: #0b60b5;

@@ -29,7 +29,7 @@ let word;
 let search;
 $("#write").click(()=>{location.href="/board/writeForm.do";});
 
- $("#word_content").keyup(()=>{
+ $("#word_content").keyup(function(){
 	 let resultVal = "";
 	 let paging = "";
 	 const date = new Date();
@@ -44,7 +44,7 @@ $("#write").click(()=>{location.href="/board/writeForm.do";});
 	        data: { "search": search, "word": word },
 	        dataType: "json",
 	        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-	        success: function (result) {	            
+	        success: function (result) {
 	            $("#board_tb > tbody > tr:gt(0)").remove();
 	            $("#board_none").remove();
 	            $("#pageCount").find("span").remove();
@@ -81,13 +81,13 @@ $("#write").click(()=>{location.href="/board/writeForm.do";});
 	    })
 	});
  
- Date.prototype.format = f => {
+ Date.prototype.format = function(f) {
 	    if (!this.valueOf()) return " ";
 
 	 const weekName = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
 	 const d = this;
 
-	 return f.replace(/(yyyy|yy|MM|dd|E|hh|mm|ss|a\/p)/gi, function($1) {
+	 return f.replace(/(yyyy|yy|MM|dd|E|hh|mm|ss|a\/p)/gi, $1 => {
 	        switch ($1) {
 	            case "yyyy": return d.getFullYear();
 	            case "yy": return (d.getFullYear() % 1000).zf(2);
@@ -104,7 +104,7 @@ $("#write").click(()=>{location.href="/board/writeForm.do";});
 	    });
 	};
 	 
-	String.prototype.string = len => {
+	String.prototype.string = function(len) {
 		let s = '', i = 0;
 		while (i++ < len) { s += this; } return s;
 		};
@@ -133,15 +133,15 @@ $("#write").click(()=>{location.href="/board/writeForm.do";});
   
   // detail---
   
-  $(document).on("click", "#detail_list_btn", () => {
+  $(document).on("click", "#detail_list_btn", function()  {
 	  let url = "/board/list.do?pageNo=" + $(this).data("pageno");
 	  if(!!$(this).data("search")){
 			url += "&search=" + $(this).data("search") + "&word=" + $(this).data("word");
 		}
 		location.href = url;
 	});
-	$(document).on("click", "#detail_update_btn", ()=> {
-		location.href="/board/updateForm.do?no=" + $(this).data("no") +  "&pageNo=" + $("#detail_list_btn").data("pageno") + "&search=" + $("#detail_list_btn").data("search") + "&word=" + $("#detail_list_btn").data("word"); ; 
+	$(document).on("click", "#detail_update_btn", function() {
+		location.href="/board/updateForm.do?no=" + $(this).data("no") +  "&pageNo=" + $("#detail_list_btn").data("pageno") + "&search=" + $("#detail_list_btn").data("search") + "&word=" + $("#detail_list_btn").data("word");
 	});
 	$(document).on("click", "#detail_delete_btn", ()=> {
 		location.href="/board/delete.do?no=" + $("#detail_update_btn").data("no") + "&pageNo=" + $(this).data("pageno") ; 
@@ -149,7 +149,7 @@ $("#write").click(()=>{location.href="/board/writeForm.do";});
 	
 	
 	// 게시글 클릭시 조회수 증가
-	$(document).on("click","#detail_btn" ,()=>{
+	$(document).on("click","#detail_btn" ,function(){
 		$.ajax({
 			url: "/board/viewCnt/" + $(this).data("no") ,
 			type:"Get"
@@ -167,6 +167,6 @@ $("#write").click(()=>{location.href="/board/writeForm.do";});
 	    }
 	    $("#update_sb").submit();
 	});
-	$("#update_btn_cancel").click(()=>{
+	$("#update_btn_cancel").click(function(){
 		location.href="/board/detail.do?no=" + $(this).data("no") + "&pageNo=" + $(this).data("pageno") + "&search=" + $(this).data("search") + "&word=" + $(this).data("word"); 
 	});

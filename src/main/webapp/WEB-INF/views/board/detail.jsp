@@ -39,7 +39,7 @@
             <td>${board.writer }</td>
         </tr>
         <tr>
-            <td>내용:</td>
+            <td></td>
             <td><textarea style="resize: none;" class="summernote" id="detail_content"  name="content">${board.content }</textarea></td>
         </tr>
         <tr>

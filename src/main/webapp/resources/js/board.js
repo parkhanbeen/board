@@ -43,12 +43,17 @@ $(document).ready(()=>{
 		// 	}
 		// });
 
-		var mm = this.getMonth() + 1; // getMonth() is zero-based
-		var dd = this.getDate();
+		const MM = this.getMonth() + 1; // getMonth() is zero-based
+		const dd = this.getDate();
+		const HH = this.getHours();
+		const mm = this.getMinutes();
+		const ss = this.getSeconds();
 
-		return [this.getFullYear(),
-			(mm>9 ? '' : '0') + mm,
-			(dd>9 ? '' : '0') + dd
+		return [this.getFullYear() + '-',
+			(MM>9 ? '' : '0') + MM + '-',
+			(dd>9 ? '' : '0') + dd + ' ',
+			(HH>9 ? '' : '0') + HH + ':',
+			mm + ':',ss
 		].join('');
 	};
 
@@ -84,11 +89,9 @@ $("#write").click(()=>{location.href="/board/writeForm.do";});
 	                	resultVal += "<tr><td>" + b.no + "</td><td><a data-pageno='" + b.pageNo + "' data-no='" + b.no + "' id='detail_btn' href='/board/detail.do?no="+b.no + "&pageNo="+b.pageNo+"&search="+search+"&word="+word+"'>" + b.title + "</a></td>"; 
 		                   resultVal += "<td>" + b.writer + "</td><td>" + b.content + "</td><td>" + b.viewCnt + "</td>";
 		                   resultVal += "<td>" + new Date(b.createDate).format(); + "</td></tr>";
-		                   console.log(b,b.createDate, new Date(b.createDate));
-						// new Date().format("yyyy-MM-dd hh:mm:ss")
 
 		            }
-	                $("#pageCount").html("<span>게시물 총 " + result.pageResult.count + "개</span");
+	                $("#pageCount").html("<span>게시물 총 " + result.pageResult.count + " 개</span");
 	                if(result.pageResult.count !=0){
 	                paging += "<ul class='pagination' id='board_paging'>";
 	                    if(result.pageResult.prev){

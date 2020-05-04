@@ -20,7 +20,38 @@ $(document).ready(()=>{
 	    height: height,
 		minHeight: minHeight,             // set minimum height of editor
 		maxHeight: manHeight             // set maximum height of editor
-	    });	
+	    });
+	Date.prototype.format = function(f) {
+		// if (!this.valueOf()) return " ";
+		//
+		// const weekName = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+		// const d = this;
+		//
+		// return f.replace(/(yyyy|yy|MM|dd|E|hh|mm|ss|a\/p)/gi, $1 => {
+		// 	switch ($1) {
+		// 		case "yyyy": return d.getFullYear();
+		// 		case "yy": return (d.getFullYear() % 1000).zf(2);
+		// 		case "MM": return (d.getMonth() + 1).zf(2);
+		// 		case "dd": return d.getDate().zf(2);
+		// 		case "E": return weekName[d.getDay()];
+		// 		case "HH": return d.getHours().zf(2);
+		// 		case "hh": return ((h = d.getHours() % 12) ? h : 12).zf(2);
+		// 		case "mm": return d.getMinutes().zf(2);
+		// 		case "ss": return d.getSeconds().zf(2);
+		// 		case "a/p": return d.getHours() < 12 ? "오전" : "오후";
+		// 		default: return $1;
+		// 	}
+		// });
+
+		var mm = this.getMonth() + 1; // getMonth() is zero-based
+		var dd = this.getDate();
+
+		return [this.getFullYear(),
+			(mm>9 ? '' : '0') + mm,
+			(dd>9 ? '' : '0') + dd
+		].join('');
+	};
+
     
 });
 
@@ -32,7 +63,7 @@ $("#write").click(()=>{location.href="/board/writeForm.do";});
  $("#word_content").keyup(function(){
 	 let resultVal = "";
 	 let paging = "";
-	 const date = new Date();
+	 var date = new Date();
 	 search = $("#select_box").val();
 	    word = $(this).val();
 	    $("#board_tb > tbody > tr:gt(0)").remove();
@@ -52,7 +83,10 @@ $("#write").click(()=>{location.href="/board/writeForm.do";});
 	                for(let b of result.list) {
 	                	resultVal += "<tr><td>" + b.no + "</td><td><a data-pageno='" + b.pageNo + "' data-no='" + b.no + "' id='detail_btn' href='/board/detail.do?no="+b.no + "&pageNo="+b.pageNo+"&search="+search+"&word="+word+"'>" + b.title + "</a></td>"; 
 		                   resultVal += "<td>" + b.writer + "</td><td>" + b.content + "</td><td>" + b.viewCnt + "</td>";
-		                   resultVal += "<td>" + new Date(b.createDate).format("yyyy-MM-dd hh:mm:ss") + "</td></tr>";
+		                   resultVal += "<td>" + new Date(b.createDate).format(); + "</td></tr>";
+		                   console.log(b,b.createDate, new Date(b.createDate));
+						// new Date().format("yyyy-MM-dd hh:mm:ss")
+
 		            }
 	                $("#pageCount").html("<span>게시물 총 " + result.pageResult.count + "개</span");
 	                if(result.pageResult.count !=0){
@@ -80,29 +114,10 @@ $("#write").click(()=>{location.href="/board/writeForm.do";});
 	        }
 	    })
 	});
+
+
  
- Date.prototype.format = function(f) {
-	    if (!this.valueOf()) return " ";
 
-	 const weekName = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
-	 const d = this;
-
-	 return f.replace(/(yyyy|yy|MM|dd|E|hh|mm|ss|a\/p)/gi, $1 => {
-	        switch ($1) {
-	            case "yyyy": return d.getFullYear();
-	            case "yy": return (d.getFullYear() % 1000).zf(2);
-	            case "MM": return (d.getMonth() + 1).zf(2);
-	            case "dd": return d.getDate().zf(2);
-	            case "E": return weekName[d.getDay()];
-	            case "HH": return d.getHours().zf(2);
-	            case "hh": return ((h = d.getHours() % 12) ? h : 12).zf(2);
-	            case "mm": return d.getMinutes().zf(2);
-	            case "ss": return d.getSeconds().zf(2);
-	            case "a/p": return d.getHours() < 12 ? "오전" : "오후";
-	            default: return $1;
-	        }
-	    });
-	};
 	 
 	String.prototype.string = function(len) {
 		let s = '', i = 0;

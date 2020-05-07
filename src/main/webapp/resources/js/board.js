@@ -1,5 +1,4 @@
 // board---
-
 $(document).ready(()=>{
 	const height = 400;
 	const minHeight = null;
@@ -61,7 +60,6 @@ $(document).ready(()=>{
     
 });
 
-/* jshint esversion: 6 */
 let word;
 let search;
 $("#write").click(()=>{location.href="/board/writeForm.do";});

@@ -53,7 +53,8 @@ $(document).ready(()=>{
 			(MM>9 ? '' : '0') + MM + '-',
 			(dd>9 ? '' : '0') + dd + ' ',
 			(HH>9 ? '' : '0') + HH + ':',
-			mm + ':',ss
+			(mm>9 ? '' : '0') + mm + ':',
+			(ss>9 ? '' : '0') + ss
 		].join('');
 	};
 
@@ -84,6 +85,7 @@ $("#write").click(()=>{location.href="/board/writeForm.do";});
 	            $("#board_tb > tbody > tr:gt(0)").remove();
 	            $("#board_none").remove();
 	            $("#pageCount").find("span").remove();
+	            $(".pagination").remove();
 	            if(result.list.length > 0){
 	                for(let b of result.list) {
 	                	resultVal += "<tr><td>" + b.no + "</td><td><a data-pageno='" + b.pageNo + "' data-no='" + b.no + "' id='detail_btn' href='/board/detail.do?no="+b.no + "&pageNo="+b.pageNo+"&search="+search+"&word="+word+"'>" + b.title + "</a></td>"; 

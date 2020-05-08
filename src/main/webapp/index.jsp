@@ -8,7 +8,8 @@
 </head>
 <body>
      <script> 
-            location.href="/board/list.do"; 
+            location.href="/user/login"; 
+            /*location.href="/board/list.do";  */
            /* location.href="/board/home.do";  */
      </script>
 </body>

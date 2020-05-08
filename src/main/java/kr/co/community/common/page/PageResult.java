@@ -1,4 +1,4 @@
-package kr.co.board.common.page;
+package kr.co.community.common.page;
 
 public class PageResult {
 	private int pageNo;

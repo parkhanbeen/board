@@ -1,13 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
-</head>
-  <link rel="stylesheet" href="/resources/css/login.css"> 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- <link rel="stylesheet" href="/resources/css/login.css">  -->
+  <link href="<c:url value="/resources/css/login.css" />" rel="stylesheet">
    <script src="/resources/js/login.js"></script>
+</head>
 <body>
 <div class="form">
       

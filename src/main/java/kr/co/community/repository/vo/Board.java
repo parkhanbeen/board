@@ -1,4 +1,4 @@
-package kr.co.board.repository.vo;
+package kr.co.community.repository.vo;
 
 import java.util.Date;
 

@@ -1,8 +1,8 @@
-package kr.co.board.repository.mapper;
+package kr.co.community.repository.mapper;
 
 import java.util.List;
 
-import kr.co.board.repository.vo.Board;
+import kr.co.community.repository.vo.Board;
 
 public interface BoardMapper {	
 	List<Board> selectAll();

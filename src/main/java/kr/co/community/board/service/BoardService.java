@@ -1,9 +1,9 @@
-package kr.co.board.service;
+package kr.co.community.board.service;
 
 import java.util.List;
 import java.util.Map;
 
-import kr.co.board.repository.vo.Board;
+import kr.co.community.repository.vo.Board;
 
 public interface BoardService {
 	List<Board> selectAll();

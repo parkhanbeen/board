@@ -24,7 +24,7 @@
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 
-	<context:component-scan base-package="kr.co.board" />
+	<context:component-scan base-package="kr.co.community" />
 	
     <mvc:resources mapping="/resources/**" location="/resources/"/>
 	<mvc:resources mapping="/bower_components/**" location="/resources/bower_components/"/>
@@ -49,14 +49,14 @@
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="typeAliasesPackage" value="kr.co.board.repository.vo" />
+		<property name="typeAliasesPackage" value="kr.co.community.repository.vo" />
 		<property name="mapperLocations" value="classpath*:config/sqlmap/*.xml" />
 		<property name="configLocation" value="classpath:config/db/sqlMapConfig.xml" />
 	</bean>
 
 	<!-- scan mapper -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="kr.co.board.repository.mapper" />
+		<property name="basePackage" value="kr.co.community.repository.mapper" />
 	</bean>
 	
 	<!-- tiles -->
@@ -71,5 +71,12 @@
 			</list>
 		</property>
 	</bean>
+<!-- 	<mvc:interceptors>
+         <mvc:interceptor>
+                  <mvc:mapping path="/**" /> 
+                  <bean class="com.victolee.interceptor.MyInterceptor" />
+         </mvc:interceptor>
+
+	</mvc:interceptors> -->
      
 </beans>

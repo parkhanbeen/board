@@ -1,9 +1,9 @@
-package kr.co.board.controller;
+package kr.co.community.board.controller;
 
 import java.util.Map;
 
-import kr.co.board.repository.vo.Board;
-import kr.co.board.service.BoardService;
+import kr.co.community.board.service.BoardService;
+import kr.co.community.repository.vo.Board;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

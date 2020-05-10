@@ -32,14 +32,14 @@
             SELECT * FROM  tb_board
        <if test='search != null'>
             where
-       	 <choose>           
+       	 <choose>
             <when test='search == "all"'>
                 title like  concat('%',#{word},'%')
-                or content like concat('%',#{word},'%')                
-                or writer like concat('%',#{word},'%')            
+                or content like concat('%',#{word},'%')
+                or writer like concat('%',#{word},'%')
             </when>
             <otherwise>
-                ${search} like concat('%',#{word},'%')  
+                ${search} like concat('%',#{word},'%')
             </otherwise>
          </choose>
             order by no asc

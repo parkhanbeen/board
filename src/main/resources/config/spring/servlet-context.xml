@@ -71,12 +71,13 @@
 			</list>
 		</property>
 	</bean>
-<!-- 	<mvc:interceptors>
+ 	<mvc:interceptors>
          <mvc:interceptor>
-                  <mvc:mapping path="/**" /> 
-                  <bean class="com.victolee.interceptor.MyInterceptor" />
+                  <mvc:mapping path="/*" /> 
+                  <mvc:mapping path="/board/*.do" /> 
+                  <bean class="kr.co.community.common.interceptor.CommonInterceptor" />
          </mvc:interceptor>
 
-	</mvc:interceptors> -->
+	</mvc:interceptors> 
      
 </beans>

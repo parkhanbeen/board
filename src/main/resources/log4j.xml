@@ -23,7 +23,7 @@
     
     <!-- Application Loggers -->
     <logger name="kr.co.community" >
-        <level value="info" />
+        <level value="debug" />
     </logger>
     
     <!-- 3rdparty Loggers -->

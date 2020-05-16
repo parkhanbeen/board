@@ -68,7 +68,16 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
              <artifactId>spring-jdbc</artifactId>
             <version>${spring.maven.artifact.version}</version>
          </dependency>
-		
+
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+
 		<!-- db -->
 		
 		<dependency>
@@ -175,7 +184,16 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 		</dependency>
 
 
-		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>${slf4j.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+
+
 		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
     		<dependency>
   		       <groupId>org.slf4j</groupId>
@@ -184,11 +202,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
        		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.slf4j/jcl-over-slf4j -->
-    		<dependency>
-    		    <groupId>org.slf4j</groupId>
-		        <artifactId>jcl-over-slf4j</artifactId>
-		        <version>${slf4j.version}</version>
-      		</dependency>-->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
 
 		<dependency>
 	    	<groupId>org.slf4j</groupId>
@@ -198,9 +216,9 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 		</dependency>
 
 		<dependency>
-		<groupId>org.apache.logging.log4j</groupId>
-	    <artifactId>log4j-core</artifactId>
-		<version>${log4j.version}</version>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j.version}</version>
 		</dependency>
 
 		

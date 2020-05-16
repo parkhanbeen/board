@@ -73,11 +73,11 @@
 	</bean>
  	<mvc:interceptors>
          <mvc:interceptor>
-                  <mvc:mapping path="/*" /> 
-                  <mvc:mapping path="/board/*.do" /> 
+                <!--  <mvc:mapping path="/**" />-->
+                <mvc:mapping path="/board/**" />
                   <bean class="kr.co.community.common.interceptor.CommonInterceptor" />
          </mvc:interceptor>
 
-	</mvc:interceptors> 
+	</mvc:interceptors>
      
 </beans>

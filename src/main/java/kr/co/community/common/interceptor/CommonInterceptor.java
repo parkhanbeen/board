@@ -26,7 +26,7 @@ public class CommonInterceptor extends HandlerInterceptorAdapter{
         Account loginVO = (Account) session.getAttribute("Account");
         
         if(loginVO == null){
-            response.sendRedirect("/user/login");
+            response.sendRedirect("/users/login");
             return false;
         }
         return true;

@@ -18,10 +18,8 @@ public class UserController {
 	
 	@Autowired
 	private UserService service;
-	
-	
-	
-	
+
+
 	// login 페이지 이동
 	    @GetMapping("login")
 		public String loginForm(){

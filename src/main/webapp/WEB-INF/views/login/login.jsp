@@ -6,15 +6,15 @@
   <div class="form">
     <form class="register-form">
       <input id="id_reg" type="text" placeholder="id"/>
-      <input id="name_reg" type="text" placeholder="name"/>
-      <input id="password_reg" type="password" placeholder="password"/>
+      <input id="password_reg" type="password" placeholder="password" autocomplete="new-password"/>
+      <input id="name_reg" type="text" placeholder="name" />
       <input id="email_reg" type="text" placeholder="email address"/>
       <button>create</button>
       <p class="message">Already registered? <a href="#">Sign In</a></p>
     </form>
     <form class="login-form">
       <input id="id_lg" type="text" placeholder="id"/>
-      <input id="password_lg" type="password" placeholder="password"/>
+      <input id="password_lg" type="password" placeholder="password" autocomplete="new-password"/>
       <button id="login_Btn">login</button>
       <p class="message">Not registered? <a href="#">Create an account</a></p>
       <p class="message_id">Have you forgotten your id? <a href="#">Forgot your ID</a></p>

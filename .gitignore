@@ -1,6 +1,6 @@
 
 /target/
-target/*
+target/**
 *.properties
 # Created by https://www.gitignore.io/api/java,eclipse
 # Edit at https://www.gitignore.io/?templates=java,eclipse
@@ -78,6 +78,8 @@ local.properties
 ### Java ###
 # Compiled class file
 *.class
+/src/main/webapp/WEB-INF/classes
+/src/main/webapp/WEB-INF/lib
 
 # Log file
 *.log

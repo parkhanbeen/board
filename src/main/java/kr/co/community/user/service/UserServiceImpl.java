@@ -10,4 +10,9 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private UserMapper mapper;
 
+
+    @Override
+    public int idCheck(String id) {
+        return mapper.idCheck(id);
+    }
 }

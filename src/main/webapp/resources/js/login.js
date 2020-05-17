@@ -34,7 +34,6 @@ let login = {
 			contentType: 'application/json'
 		}).done(function () {
 			alert('성공');
-
 		});
 	}
 };

@@ -11,6 +11,9 @@ import kr.co.community.common.interceptor.CommonInterceptor;
 import kr.co.community.repository.vo.Account;
 import kr.co.community.user.service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("users")
 public class UserController {
@@ -31,11 +34,21 @@ public class UserController {
 		}	
 	    
 	    @PostMapping("login") 
-	    public String login(@RequestBody Account account) {
+	    public boolean login(@RequestBody Account account, HttpServletRequest request) {
 	    	log.info(account.getPassword());
 	    	account.setPassword(passEncoder.encode(account.getPassword()));
 	    	log.info(account.getPassword());
-	    	return "board/list.tiles";
+
+	    	HttpSession session = request.getSession();
+	    	Account user = service.loginAccount(account);
+	    	session.setAttribute("account",user);
+
+	    	if(session==null){
+	    		return false;
+			}else{
+				return true;
+			}
+
 	    }
 
 }

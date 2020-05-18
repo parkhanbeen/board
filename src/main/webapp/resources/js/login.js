@@ -32,8 +32,10 @@ let login = {
 			data: JSON.stringify(param),
 			dataType: "json",
 			contentType: 'application/json'
-		}).done(function () {
-			alert('성공');
+		}).done(function (result) {
+			if (result){
+			location.href="/board/list.do";
+			}
 		});
 	}
 };

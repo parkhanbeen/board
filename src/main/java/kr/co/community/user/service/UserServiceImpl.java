@@ -1,6 +1,7 @@
 package kr.co.community.user.service;
 
 import kr.co.community.repository.mapper.UserMapper;
+import kr.co.community.repository.vo.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +15,10 @@ public class UserServiceImpl implements UserService{
     @Override
     public int idCheck(String id) {
         return mapper.idCheck(id);
+    }
+
+    @Override
+    public Account loginAccount(Account account) {
+        return mapper.loginAccount(account);
     }
 }

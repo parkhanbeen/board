@@ -35,6 +35,9 @@ let login = {
 		}).done(function (result) {
 			if (result){
 			location.href="/board/list.do";
+			}else{
+				swal("아이디 또는 비밀번호가 일치하지 않습니다 .")
+				return;
 			}
 		});
 	}

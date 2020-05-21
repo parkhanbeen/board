@@ -23,7 +23,7 @@ public class CommonInterceptor extends HandlerInterceptorAdapter{
             log.debug(" Request URI \t:  " + request.getRequestURI());
         }
 		HttpSession session = request.getSession();
-        Account loginVO = (Account) session.getAttribute("Account");
+        Account loginVO = (Account) session.getAttribute("account");
         
         if(loginVO == null){
             response.sendRedirect("/users/login");

@@ -13,7 +13,7 @@
     select *
         from tb_account
         where id = #{id}
-        and password = #{password}
+        and pass = #{pass}
     </select>
 
 

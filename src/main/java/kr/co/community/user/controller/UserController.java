@@ -34,25 +34,24 @@ public class UserController {
 			return "login/login";  
 		}
 
-	@PostMapping("login")
 	@ResponseBody
-	public boolean login(@RequestBody Account account, HttpServletRequest request, Model model) {
-		log.info(account.getPassword());
-		account.setPassword(passEncoder.encode(account.getPassword()));
-		log.info(account.getPassword());
+	@PostMapping("login")
+	public Boolean login(@RequestBody Account account, HttpServletRequest request, Model model) {
+		log.info(account.getPass());
+		account.setPass(passEncoder.encode(account.getPass()));
+		log.info(account.getPass());
 
-		boolean result = true;
+		Boolean result = true;
 		HttpSession session = request.getSession();
 		Account user = service.loginAccount(account);
 		session.setAttribute("account", user);
 
-		if (session == null) {
+		if (user == null) {
 			result = false;
 		}
-
+		log.info(result);
+		
 		return result;
-
-
 	}
 
 }

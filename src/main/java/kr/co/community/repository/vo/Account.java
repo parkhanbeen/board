@@ -9,7 +9,7 @@ import lombok.Setter;
 public class Account {
 	private int no;
 	private String id;
-	private String password;
+	private String pass;
 	private String name;
 	private String email;
 	private String resignation;
@@ -25,11 +25,11 @@ public class Account {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getPassword() {
-		return password;
+	public String getPass() {
+		return pass;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 	public String getName() {
 		return name;

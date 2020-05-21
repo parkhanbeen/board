@@ -26,6 +26,9 @@
   box-sizing: border-box;
   font-size: 14px;
 }
+/* .login-form #pass_lg{
+   margin: 0 0 5px;
+} */
 .form button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
@@ -97,4 +100,17 @@ body {
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.result_msg{
+	margin: 0 auto;
+  /*   padding: 12px 0 0; */
+    max-width: 460px;
+}
+.result_msg p{
+	font-size: 14px;
+    color: #fd472b;
+    line-height: 23px;
+    word-wrap: break-word;
+    word-break: keep-all;
 }

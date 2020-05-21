@@ -38,16 +38,19 @@ public class UserController {
 	@PostMapping("login")
 	public Boolean login(@RequestBody Account account, HttpServletRequest request, Model model) {
 		log.info(account.getPass());
-		account.setPass(passEncoder.encode(account.getPass()));
+//		account.setPass(passEncoder.encode(account.getPass()));
 		log.info(account.getPass());
 
 		Boolean result = true;
 		HttpSession session = request.getSession();
 		Account user = service.loginAccount(account);
-		session.setAttribute("account", user);
-
-		if (user == null) {
+		
+		log.info(passEncoder.matches(account.getPass(), user.getPass()));
+		
+		if (user == null || passEncoder.matches(account.getPass(), user.getPass()) == false) {
 			result = false;
+		}else {
+			session.setAttribute("account", user);			
 		}
 		log.info(result);
 		

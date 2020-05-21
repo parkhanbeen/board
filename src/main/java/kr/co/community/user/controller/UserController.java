@@ -53,5 +53,24 @@ public class UserController {
 		
 		return result;
 	}
+	
+	@ResponseBody
+	@PostMapping("register")
+	public Boolean register(@RequestBody Account account, HttpServletRequest request, Model model) {
+		log.info(account.getPass());
+		account.setPass(passEncoder.encode(account.getPass()));
+		log.info(account.getPass());
+		log.info(account.getName());
+		log.info(account.getEmail());
+		Boolean result = true;
+	    try {	    	
+	    	service.registerAccount(account);  	
+	    	return result;
+	    }catch (Exception e) {
+			log.debug(e);
+			result = false;
+			return result;
+		}
+	}
 
 }

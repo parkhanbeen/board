@@ -21,4 +21,9 @@ public class UserServiceImpl implements UserService{
     public Account loginAccount(Account account) {
         return mapper.loginAccount(account);
     }
+
+	@Override
+	public void registerAccount(Account account) throws Exception{
+		 mapper.registerAccount(account);
+	}
 }

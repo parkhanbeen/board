@@ -1,5 +1,7 @@
 package kr.co.community.repository.vo;
 
+import java.util.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +15,14 @@ public class Account {
 	private String name;
 	private String email;
 	private String resignation;
+	private Date createDate;		
+	
+	public Date getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
 	public int getNo() {
 		return no;
 	}	

@@ -1,4 +1,5 @@
 var loginExit = false;
+var registerExit = false;
 $('.message a').click(function(){
     $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
 });
@@ -15,6 +16,58 @@ $(document).on("click", "#login_Btn", () => {
 $(document).on("keyup", ".login_txt", () => {
     login.hideMsg();
 });
+
+$(document).on("click", "#register_Btn", () => {
+	register.validation();
+    if(registerExit){
+    	return;
+    }
+    register.login();
+    
+});
+
+let register = {
+		login : function () {
+			let param = {
+				id : $('#id_reg').val(),
+				pass : $('#pass_lg').val(),
+				name : $('#name_reg').val(),
+				email : $('#email_reg').val()
+			};
+
+			$.ajax({
+				type: "post",
+				url: "/users/register",
+				data: JSON.stringify(param),
+				dataType: "json",
+				contentType: 'application/json'
+			})
+		},
+		validation : function(){
+			if(!$('#id_reg').val()){
+				swal("아이디을 입력해주세요.");
+				registerExit = true;
+				return;
+			}
+		    if(!$('#pass_reg').val()){
+		    	swal("비밀번호을 입력해주세요.");		
+		    	registerExit = true;
+		    	return;
+			}
+		    if(!$('#name_reg').val()){
+		    	swal("이름을 입력해주세요.");		
+		    	registerExit = true;
+		    	return;
+			}
+		    if(!$('#email_reg').val()){
+		    	swal("이메일을 입력해주세요.");		
+		    	registerExit = true;
+		    	return;
+			}
+		    registerExit = false;
+		}
+};
+
 
 let login = {
 	login : function () {

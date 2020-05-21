@@ -6,5 +6,7 @@ public interface UserMapper {
     int idCheck(String id);
 
     Account loginAccount(Account account);
+    
+    void registerAccount(Account account);
 
 }

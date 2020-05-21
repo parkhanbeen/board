@@ -15,6 +15,13 @@
         where id = #{id}
         and pass = #{pass}
     </select>
+    
+    <insert id="registerAccount" parameterType="account">
+	    insert into 
+	    tb_account(id,pass,name,email) 
+	    values
+	    (#{id},#{pass},#{name},#{email})
+  </insert>
 
 
 

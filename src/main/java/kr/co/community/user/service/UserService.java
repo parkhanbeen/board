@@ -8,5 +8,7 @@ public interface UserService {
     int idCheck(String id);
 
     Account loginAccount(Account account);
+    
+    void registerAccount(Account account) throws Exception;
 
 }

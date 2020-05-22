@@ -90,11 +90,14 @@ let register = {
 				url: "/users/register/" + id ,
 			}).done(function (result) {
 				if (result){
-					 html = '<p style="color:#fd472b; font-size: 14px; font-weight:bold">이미 사용중인 아이디 입니다.<p>';
+					$('#not_Available_Id').css('display','none');
+					$('#available_Id').css('display','block');
 				}else{
-					html = '<p style="color:##374850; font-size: 14px; font-weight:bold">사용 가능한 아이디 입니다.<p>';
+					$('#available_Id').css('display','none');
+					$('#not_Available_Id').css('display','block');
+//					 html = '<p style="color:##374850; font-size: 14px; font-weight:bold">사용 가능한 아이디 입니다.<p>';
 				}
-				$('.result_reg_msg').append(html);
+//				$('.result_reg_msg').append(html);
 				$('#result_reg_msg').css('display','block');
 				});
 		}

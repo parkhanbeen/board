@@ -45,7 +45,8 @@ public class UserController {
 		HttpSession session = request.getSession();
 		Account user = service.loginAccount(account);
 		
-		log.info(passEncoder.matches(account.getPass(), user.getPass()));
+		log.info("사용자 암호화 비밀번호"+user.getPass());
+		log.info("입력받은 비밀번호 비교" + passEncoder.matches(account.getPass(), user.getPass()));
 		
 		if (user == null || passEncoder.matches(account.getPass(), user.getPass()) == false) {
 			result = false;
@@ -60,9 +61,7 @@ public class UserController {
 	@ResponseBody
 	@PostMapping("register")
 	public Boolean register(@RequestBody Account account, HttpServletRequest request, Model model) {
-		log.info(account.getPass());
 		account.setPass(passEncoder.encode(account.getPass()));
-		log.info(account.getPass());
 		log.info(account.getName());
 		log.info(account.getEmail());
 		Boolean result = true;
@@ -74,6 +73,12 @@ public class UserController {
 			result = false;
 			return result;
 		}
+	}
+	@ResponseBody
+	@GetMapping("register/{id}")
+	public int idCheck(@PathVariable("id") String id){	
+		log.info(id);
+		return service.idCheck(id);
 	}
 
 }

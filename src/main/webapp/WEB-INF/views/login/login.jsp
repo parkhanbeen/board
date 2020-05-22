@@ -6,16 +6,18 @@
   <div class="form">
     <form class="register-form">
       <input id="id_reg" type="text" placeholder="id"/>
+      <div id="result_reg_msg" class="result_reg_msg" style="display: none;">       
+      </div>
       <input id="pass_reg" type="password" placeholder="password" autocomplete="new-password"/>
       <input id="name_reg" type="text" placeholder="name" />
       <input id="email_reg" type="text" placeholder="email address"/>
       <button id="register_Btn" type="button">create</button>
-      <p class="message">Already registered? <a href="#">Sign In</a></p>
+      <p class="message">Already registered? <a id="signIn_btn" href="#">Sign In</a></p>
     </form>
     <form class="login-form">
       <input id="id_lg" class="login_txt" type="text" placeholder="id"/>
       <input id="pass_lg" class="login_txt" type="password" placeholder="password" autocomplete="new-password"/>
-      <div id="result_msg" class="result_msg" style="display: none;">       
+      <div id="result_lg_msg" class="result_lg_msg" style="display: none;">       
       </div>
       <button id="login_Btn" type="button">login</button>
       <p class="message">Not registered? <a href="#">Create an account</a></p>

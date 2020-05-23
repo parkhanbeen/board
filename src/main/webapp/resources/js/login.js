@@ -1,5 +1,5 @@
-var loginExit = false;
-var registerExit = false;
+let loginExit = false;
+let registerExit = false;
 
 $('.message a').click(function(){
 	  $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
@@ -19,7 +19,7 @@ $(document).on("keyup", ".login_txt", () => {
 });
 
 $(document).on("keyup", "#id_reg", () => {
-	var idCh = $('#id_reg').val();
+	const idCh = $('#id_reg').val();
 	register.IdCheck(idCh);
 });
 

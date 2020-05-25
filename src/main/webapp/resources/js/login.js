@@ -1,5 +1,5 @@
-var loginExit = false;
-var registerExit = false;
+let loginExit = false;
+let registerExit = false;
 
 $('.message a').click(function(){
 	  $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
@@ -19,7 +19,7 @@ $(document).on("keyup", ".login_txt", () => {
 });
 
 $(document).on("keyup", "#id_reg", () => {
-	var idCh = $('#id_reg').val();
+	let idCh = $('#id_reg').val();
 	register.IdCheck(idCh);
 });
 
@@ -84,7 +84,7 @@ let register = {
 		},
 		
 		IdCheck : function(id){
-			var html = '';
+			let html = '';
 			$('#result_reg_msg').find('p').remove();
 			$.ajax({
 				url: "/users/register/" + id ,
@@ -123,7 +123,7 @@ let login = {
 			if (result){
 			location.href="/board/list.do";
 			}else{
-				var html = '<p style="color:#fd472b; font-size: 14px; font-weight:bold">아이디 또는 비밀번호가 일치하지 않습니다 .<p>';
+				let html = '<p style="color:#fd472b; font-size: 14px; font-weight:bold">아이디 또는 비밀번호가 일치하지 않습니다 .<p>';
 //				swal("아이디 또는 비밀번호가 일치하지 않습니다 .");
 				$('.result_lg_msg').append(html);
 				$('#result_lg_msg').css('display','block');

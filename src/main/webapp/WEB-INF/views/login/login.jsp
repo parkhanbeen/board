@@ -7,7 +7,7 @@
     <form class="register-form">
       <input id="id_reg" type="text" placeholder="id"/>
       <div id="result_reg_msg" class="result_reg_msg" style="display: none;">      
-      <p id="available_Id" style="color:##374850; font-size: 14px; font-weight:bold; display:none;">사용 가능한 아이디 입니다.<p>
+      <p id="available_Id" style="color:#374850; font-size: 14px; font-weight:bold; display:none;">사용 가능한 아이디 입니다.<p>
       <p id="not_Available_Id" style="color:#fd472b; font-size: 14px; font-weight:bold; display:none;">이미 사용중인 아이디 입니다.<p> 
       </div>
       <input id="pass_reg" type="password" placeholder="password" autocomplete="new-password"/>

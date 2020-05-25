@@ -102,12 +102,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.result_msg{
+.result_lg_msg , .result_reg_msg{
 	margin: 0 auto;
   /*   padding: 12px 0 0; */
     max-width: 460px;
 }
-.result_msg p{
+.result_lg_msg p ,.result_reg_msg P{
 	font-size: 14px;
     color: #fd472b;
     line-height: 23px;

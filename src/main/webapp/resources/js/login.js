@@ -22,13 +22,12 @@ $(document).on("keyup", ".login_txt", () => {
 });
 
 $(document).on("keyup", "#id_reg", () => {
-
 	let idCh = $('#id_reg').val();
 	register.IdCheck(idCh);
 });
 
 $(document).on("click", "#register_Btn", () => {
-	if($('#result_reg_msg').find('p').css('color') === "rgb(253, 71, 43)"){
+	if($('#result_reg_msg').find('p').css('color') == "rgb(253, 71, 43)"){
 		swal($('#result_reg_msg').find('p').text());
 		$('#id_reg').focus();
 		return;

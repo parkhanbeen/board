@@ -9,8 +9,8 @@
 <body>
      <script> 
           // location.href="/users/login";
-          // location.href="/board/list.do";
-            location.href="/board/home.do";  
+            location.href="/board/list.do";
+           /* location.href="/board/home.do";  */
      </script>
 </body>
 </html>

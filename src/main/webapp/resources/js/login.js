@@ -11,7 +11,6 @@ $('#forgotId_modal').on('click', function(e){
 	  e.preventDefault();
 	});
 
-
 $('.message a').click(function(){
 	  $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
 	});

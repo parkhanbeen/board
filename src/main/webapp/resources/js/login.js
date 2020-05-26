@@ -1,7 +1,16 @@
 let loginExit = false;
 let registerExit = false;
+let findExit = false;
 const alphaDigit= 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 const regExp = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/; 
+
+$('#forgotId_modal').on('click', function(e){
+	  $('#findId_name').val('');
+	  $('#findId_email').val('');
+	  $('#myModal').modal('show');
+	  e.preventDefault();
+	});
+
 
 $('.message a').click(function(){
 	  $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
@@ -14,6 +23,13 @@ $(document).on("click", "#login_Btn", () => {
     }
     login.login();
     
+});
+
+$(document).on("click", "#findId_btn", () => {
+	login.findIdvalid();
+	 if(findExit){
+	    	return;
+	    }
 });
 
 $(document).on("keyup", ".login_txt", () => {
@@ -187,6 +203,44 @@ let register = {
 
 
 let login = {
+		
+	findIdvalid : function(){
+		 if(!$('#findId_name').val()){
+		    	swal("이름을 입력해주세요.");		
+		    	findExit = true;
+		    	return;
+			}
+		    if(!$('#findId_email').val()){
+		    	swal("이메일을 입력해주세요.");	
+		    	findExit = true;
+		    	return;
+			}else{
+				 if(!regExp.test($('#findId_email').val())) { 
+					 swal("이메일 주소가 유효하지 않습니다"); 
+				      $('#findId_email').focus(); 
+				      findExit = true;
+				      return; 
+				   } 
+			}
+		    findExit = false;
+		    login.findId();
+	},	
+	findId : function(){
+		let param = {
+				name:$('#findId_name').val(),
+				email:$('#findId_email').val()
+			};
+		$.ajax({
+			type: "post",
+			url: "/users/login",
+			data: JSON.stringify(param),
+			dataType: "json",
+			contentType: 'application/json'
+		}).done(function (result) {
+			
+		});
+		 
+	},	
 	
 	login : function () {
 		let param = {

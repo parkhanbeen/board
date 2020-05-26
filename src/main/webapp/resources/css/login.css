@@ -114,3 +114,28 @@ body {
     word-wrap: break-word;
     word-break: keep-all;
 }
+
+.modal-header{
+	background: #4aabe0;
+}
+.modal-title{
+	color: white;
+}
+
+.modal-body {
+    height: 150px;
+}
+.modal_input{
+	width: 300px;
+    margin: 10px;
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+

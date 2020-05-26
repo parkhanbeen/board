@@ -4,6 +4,7 @@ let findExit = false;
 const alphaDigit= 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 const regExp = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/; 
 
+console.log('스태시test');
 
 $('#forgotId_modal').on('click', function(e){
 	  $('#findId_name').val('');

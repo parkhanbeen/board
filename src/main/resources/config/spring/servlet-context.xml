@@ -53,6 +53,7 @@
 		<property name="mapperLocations" value="classpath*:config/sqlmap/*.xml" />
 		<property name="configLocation" value="classpath:config/db/sqlMapConfig.xml" />
 	</bean>
+	
 
 	<!-- scan mapper -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -64,6 +65,7 @@
 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
 		<property name="order" value="1"/>
 	</bean>
+	
 	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<property name="definitions">
 			<list>
@@ -71,6 +73,60 @@
 			</list>
 		</property>
 	</bean>
+	
+	
+	<!-- google mail -->
+	 <!--  <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	    	<property name="host" value="smtp.gmail.com" />
+		    <property name="port" value="587" />
+		    <property name="username" value="@gmail.com" />
+		    <property name="password" value="" />
+		    <property name="javaMailProperties">
+		    <props>
+		      <prop key="mail.smtp.auth">true</prop>
+		      <prop key="mail.smtp.starttls.enable">true</prop>
+		    </props>
+		    </property>
+  	</bean>  -->
+  	
+  	<!-- naver mail -->
+  	  <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		   <property name="host" value="smtp.naver.com" />
+			<property name="port" value="465" />
+			<property name="username" value="phb7200" />
+			<property name="password" value="fkdlvmthffntus4" />
+		    <property name="javaMailProperties">
+		    	<props>
+		     	 <prop key="mail.smtp.starttls.enable">true</prop>
+		     	 <prop key="mail.smtp.auth">true</prop>
+		      	 <prop key="mail.smtps.ssl.checkserveridentity">true</prop>
+		      	 <prop key="mail.smtps.ssl.trust">*</prop>
+		     	 <prop key="mail.debug">true</prop>
+		     	 <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+		    	</props>
+		    </property>
+ 	 </bean> 
+ 	 
+	
+	<!-- Daum mail -->
+ 	 <!-- <bean class="org.springframework.mail.javamail.JavaMailSenderImpl"
+		    p:host="smtp.daum.net"
+		    p:port="465"
+		    p:username="@hanmail.net"
+		    p:password="">
+		    <property name="javaMailProperties">
+		    <props>
+		      <prop key="mail.smtp.starttls.enable">true</prop>
+		      <prop key="mail.smtp.auth">true</prop>
+		      <prop key="mail.smtps.ssl.checkserveridentity">true</prop>
+		      <prop key="mail.smtps.ssl.trust">*</prop>
+		      <prop key="mail.debug">true</prop>
+		      <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+		      </props>
+		    </property>
+  	</bean> -->
+	
+	
  	<mvc:interceptors>
          <mvc:interceptor>
                 <!--  <mvc:mapping path="/**" />-->

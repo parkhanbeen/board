@@ -3,6 +3,20 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.community.repository.mapper.UserMapper">
 
+	<select id="passInquiry" parameterType="account" resultType="int">
+    select no
+        from tb_account
+        where    id = #{id}
+          and  name = #{name}
+          and email = #{email}
+    </select>
+    
+    <update id="updatePass" parameterType="account">
+    update tb_account
+      set pass = #{pass}
+       where no = #{no}    
+    </update>
+    
 	<select id="idInquiry" parameterType="account" resultType="String">
     select id
         from tb_account

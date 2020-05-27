@@ -90,6 +90,7 @@ public class UserController {
 		return service.idCheck(id);
 	}
 	
+	// 아이디 찾기
 	@ResponseBody
 	@PostMapping("id-inquiry")
 	public Map<String,String> idInquiry(@RequestBody Account account){	
@@ -99,6 +100,16 @@ public class UserController {
 		Map<String,String> findId = new HashMap<String,String>();
 		findId.put("id",service.idInquiry(account));
 		return findId;
+	}
+	
+	// 임시비밀번호 발급
+	@ResponseBody
+	@PostMapping("pass-inquiry")
+	public int passInquiry(@RequestBody Account account){	
+		log.info("find_id == "+account.getName());
+		log.info("find_name == "+account.getName());
+		log.info("find_email == "+account.getEmail());
+		return service.passInquiry(account);
 	}
 	
 

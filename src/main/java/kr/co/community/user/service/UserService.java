@@ -5,6 +5,8 @@ import kr.co.community.repository.vo.Account;
 
 public interface UserService {
 	
+	int passInquiry(Account account);
+	
 	String idInquiry(Account account);
 
     int idCheck(String id);

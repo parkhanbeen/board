@@ -5,13 +5,27 @@ const alphaDigit= 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789
 const regExp = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/; 
 
 
-$('#forgotId_modal').on('click', function(e){
-	  $('#findId_name').val('');
-	  $('#findId_email').val('');
-	  $('#findId_result').css('display','none');
+$('#forgotId_modal').on('click', (e) =>{
+	  $('.modal-title').text('Find ID');
+	  $('#find_name').val('');
+	  $('#find_email').val('');
+	  $('.find_btn').attr('id','findId_btn');
+	  $('#find_id').css('display','none');
+	  $('#find_result').css('display','none');
 	  $('#myModal').modal('show');
 	  e.preventDefault();
 	});
+
+$('#forgotPass_modal').on('click', (e) =>{
+	$('.modal-title').text('Find Password');
+	$('#find_name').val('');
+	$('#find_email').val('');
+	$('.find_btn').attr('id','findPass_btn');
+	$('#find_id').css('display','block');
+	$('#find_result').css('display','none');
+	$('#myModal').modal('show');
+	e.preventDefault();
+});
 
 $('.message a').click( () =>{
 	  $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
@@ -26,7 +40,8 @@ $(document).on("click", "#login_Btn", () => {
     
 });
 
-$(document).on("click", "#findId_btn", () => {
+$(document).on("click", "#findId_btn ,#findPass_btn", () => {
+	$('#find_result').css('display','none');
 	login.findIdvalid();
 	 if(findExit){
 	    	return;
@@ -206,44 +221,56 @@ let register = {
 let login = {
 		
 	findIdvalid : () => {
-		$('#findId_result').css('display','none');
-		 if(!$('#findId_name').val()){
+		let url = '/users/id-inquiry'
+		if($('.find_btn').attr('id')=='findPass_btn'){
+			url = '/users/pass-inquiry'
+			 if(!$('#find_id').val()){
+			    	swal("아이디을 입력해주세요.");		
+			    	findExit = true;
+			    	return;
+				}
+		}
+		
+		 if(!$('#find_name').val()){
 		    	swal("이름을 입력해주세요.");		
 		    	findExit = true;
 		    	return;
 			}
-		    if(!$('#findId_email').val()){
+		    if(!$('#find_email').val()){
 		    	swal("이메일을 입력해주세요.");	
 		    	findExit = true;
 		    	return;
 			}else{
-				 if(!regExp.test($('#findId_email').val())) { 
+				 if(!regExp.test($('#find_email').val())) { 
 					 swal("이메일 주소가 유효하지 않습니다"); 
-				      $('#findId_email').focus(); 
+				      $('#find_email').focus(); 
 				      findExit = true;
 				      return; 
 				   } 
 			}
 		    findExit = false;
-		    login.findId();
+		    login.findId(url);
 	},	
-	findId : () =>{
+	findId : (url) =>{
 		let param = {
-				name:$('#findId_name').val(),
-				email:$('#findId_email').val()
+				name:$('#find_name').val(),
+				email:$('#find_email').val()
 			};
+		if(url == '/users/pass-inquiry'){
+			param.id = $('#find_id').val();
+		}
 		$.ajax({
 			type: "post",
-			url: "/users/id-inquiry",
+			url: url,
 			data: JSON.stringify(param),
 			dataType: "json",
 			contentType: 'application/json'
 		}).done(function (result) {
 			if(result.id){
-				$('#findId_result').find('p').text('아이디는 '+result.id + '입니다.');
+				$('#find_result').find('p').text('아이디는 '+result.id + '입니다.');
 				console.log('성공',result);				
 			}
-			$('#findId_result').css('display','block');
+			$('#find_result').css('display','block');
 		});
 		 
 	},	

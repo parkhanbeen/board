@@ -24,7 +24,7 @@
       <button id="login_Btn" type="button">login</button>
       <p class="message">Not registered? <a href="#">Create an account</a></p>
       <p class="message_id">Have you forgotten your id? <a id="forgotId_modal" href="#">Forgot your ID</a></p>
-      <p class="message_password">Have you forgotten your password? <a href="#">Forgot your password</a></p>
+      <p class="message_password">Have you forgotten your password? <a id="forgotPass_modal" href="#">Forgot your password</a></p>
     </form>
   </div>
 </div>
@@ -38,15 +38,16 @@
         <h4 class="modal-title">Find ID</h4>
       </div>
       <div class="modal-body">
-       	 <input id="findId_name" class="modal_input" type="text" placeholder="name" />
-     	 <input id="findId_email" class="modal_input" type="email" placeholder="email address"/>
+         <input id="find_id" class="modal_input" type="text" placeholder="id" style="display: none;"/>
+       	 <input id="find_name" class="modal_input" type="text" placeholder="name" />
+     	 <input id="find_email" class="modal_input" type="email" placeholder="email address"/>
       </div>
       <div class="modal-footer">
      	 <div id="findId_result" style="display: none;">
      	  <p align="center" style="color:#374850; font-size: 14px; font-weight:bold;">없는 정보입니다.</p>
      	 </div>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="findId_btn" type="button" class="btn btn-primary">Find</button>
+        <button id="findId_btn" type="button" class="find_btn btn btn-primary">Find</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

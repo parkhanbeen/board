@@ -1,19 +1,27 @@
 package kr.co.community.user.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.community.common.interceptor.CommonInterceptor;
 import kr.co.community.repository.vo.Account;
 import kr.co.community.user.service.UserService;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("users")
@@ -74,11 +82,24 @@ public class UserController {
 			return result;
 		}
 	}
+	// 아이디 중복검사
 	@ResponseBody
 	@GetMapping("register/{id}")
 	public int idCheck(@PathVariable("id") String id){	
 		log.info(id);
 		return service.idCheck(id);
 	}
+	
+	@ResponseBody
+	@PostMapping("id-inquiry")
+	public Map<String,String> idInquiry(@RequestBody Account account){	
+		log.info("name == "+account.getName());
+		log.info("email == "+account.getEmail());
+		log.info("??id = "+service.idInquiry(account));
+		Map<String,String> findId = new HashMap<String,String>();
+		findId.put("id",service.idInquiry(account));
+		return findId;
+	}
+	
 
 }

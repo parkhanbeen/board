@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="/bower_components/jquery/dist/jquery.min.js"></script>
  <%@ include file="../../tiles/tiles-plugin_js.jsp" %>
@@ -40,6 +42,9 @@
      	 <input id="findId_email" class="modal_input" type="email" placeholder="email address"/>
       </div>
       <div class="modal-footer">
+     	 <div id="findId_result" style="display: none;">
+     	  <p align="center" style="color:#374850; font-size: 14px; font-weight:bold;">없는 정보입니다.</p>
+     	 </div>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button id="findId_btn" type="button" class="btn btn-primary">Find</button>
       </div>

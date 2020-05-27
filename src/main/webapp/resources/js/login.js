@@ -7,11 +7,12 @@ const regExp = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)
 $('#forgotId_modal').on('click', function(e){
 	  $('#findId_name').val('');
 	  $('#findId_email').val('');
+	  $('#findId_result').css('display','none');
 	  $('#myModal').modal('show');
 	  e.preventDefault();
 	});
 
-$('.message a').click(function(){
+$('.message a').click( () =>{
 	  $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
 	});
 
@@ -81,7 +82,7 @@ let register = {
 				});
 		},
 		
-		validation : function(){
+		validation : () =>{
 			if(!$('#id_reg').val()){
 				swal("아이디을 입력해주세요.");
 				registerExit = true;
@@ -203,7 +204,8 @@ let register = {
 
 let login = {
 		
-	findIdvalid : function(){
+	findIdvalid : () => {
+		$('#findId_result').css('display','none');
 		 if(!$('#findId_name').val()){
 		    	swal("이름을 입력해주세요.");		
 		    	findExit = true;
@@ -224,19 +226,23 @@ let login = {
 		    findExit = false;
 		    login.findId();
 	},	
-	findId : function(){
+	findId : () =>{
 		let param = {
 				name:$('#findId_name').val(),
 				email:$('#findId_email').val()
 			};
 		$.ajax({
 			type: "post",
-			url: "/users/login",
+			url: "/users/id-inquiry",
 			data: JSON.stringify(param),
 			dataType: "json",
 			contentType: 'application/json'
 		}).done(function (result) {
-			
+			if(result.id){
+				$('#findId_result').find('p').text('아이디는 '+result.id + '입니다.');
+				console.log('성공',result);				
+			}
+			$('#findId_result').css('display','block');
 		});
 		 
 	},	
@@ -266,14 +272,14 @@ let login = {
 		});
 	},
 	
-	hideMsg : function(){
+	hideMsg : () =>{
 		 if ( $('#result_msg').css('display') == "block" ){
 			 $('#result_msg').css('display','none');
 		 }
 
 	},
 	
-	validation : function(){
+	validation : () =>{
 		if(!$('#id_lg').val()){
 			swal("아이디을 입력해주세요.");
 			loginExit = true;

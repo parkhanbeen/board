@@ -26,4 +26,9 @@ public class UserServiceImpl implements UserService{
 	public void registerAccount(Account account) throws Exception{
 		 mapper.registerAccount(account);
 	}
+
+	@Override
+	public String idInquiry(Account account) {
+		return mapper.idInquiry(account);
+	}
 }

@@ -42,7 +42,7 @@ $(document).on("click", "#login_Btn", () => {
 
 $(document).on("click", "#findId_btn ,#findPass_btn", () => {
 	$('#find_result').css('display','none');
-	login.findIdvalid();
+	login.findValid();
 	 if(findExit){
 	    	return;
 	    }
@@ -220,7 +220,7 @@ let register = {
 
 let login = {
 		
-	findIdvalid : () => {
+	findValid : () => {
 		let url = '/users/id-inquiry'
 		if($('.find_btn').attr('id')=='findPass_btn'){
 			url = '/users/pass-inquiry'
@@ -249,9 +249,10 @@ let login = {
 				   } 
 			}
 		    findExit = false;
-		    login.findId(url);
+		    login.findInquiry(url);
 	},	
-	findId : (url) =>{
+	findInquiry : (url) =>{
+		$('#find_result').find('p').text('없는 정보입니다..');
 		let param = {
 				name:$('#find_name').val(),
 				email:$('#find_email').val()
@@ -268,7 +269,8 @@ let login = {
 		}).done(function (result) {
 			if(result.id){
 				$('#find_result').find('p').text('아이디는 '+result.id + '입니다.');
-				console.log('성공',result);				
+			}else if(result.pass == 'success'){
+				$('#find_result').find('p').text('이메일로 임시비밀번호를 발급하였습니다.');	
 			}
 			$('#find_result').css('display','block');
 		});

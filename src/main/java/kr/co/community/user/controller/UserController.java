@@ -94,9 +94,6 @@ public class UserController {
 	@ResponseBody
 	@PostMapping("id-inquiry")
 	public Map<String,String> idInquiry(@RequestBody Account account){	
-		log.info("name == "+account.getName());
-		log.info("email == "+account.getEmail());
-		log.info("??id = "+service.idInquiry(account));
 		Map<String,String> findId = new HashMap<String,String>();
 		findId.put("id",service.idInquiry(account));
 		return findId;
@@ -105,11 +102,13 @@ public class UserController {
 	// 임시비밀번호 발급
 	@ResponseBody
 	@PostMapping("pass-inquiry")
-	public int passInquiry(@RequestBody Account account){	
+	public Map<String,String> passInquiry(@RequestBody Account account){	
 		log.info("find_id == "+account.getName());
 		log.info("find_name == "+account.getName());
 		log.info("find_email == "+account.getEmail());
-		return service.passInquiry(account);
+		Map<String,String> findPass = new HashMap<String,String>();
+		findPass.put("pass",service.passInquiry(account));
+		return findPass;
 	}
 	
 

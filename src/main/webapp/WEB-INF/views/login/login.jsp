@@ -43,7 +43,7 @@
      	 <input id="find_email" class="modal_input" type="email" placeholder="email address"/>
       </div>
       <div class="modal-footer">
-     	 <div id="findId_result" style="display: none;">
+     	 <div id="find_result" style="display: none;">
      	  <p align="center" style="color:#374850; font-size: 14px; font-weight:bold;">없는 정보입니다.</p>
      	 </div>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

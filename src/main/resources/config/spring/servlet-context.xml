@@ -76,10 +76,10 @@
 	
 	
 	<!-- google mail -->
-	 <!--  <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	   <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 	    	<property name="host" value="smtp.gmail.com" />
 		    <property name="port" value="587" />
-		    <property name="username" value="@gmail.com" />
+		    <property name="username" value="qkrgksqls0228@gmail.com" />
 		    <property name="password" value="" />
 		    <property name="javaMailProperties">
 		    <props>
@@ -87,10 +87,10 @@
 		      <prop key="mail.smtp.starttls.enable">true</prop>
 		    </props>
 		    </property>
-  	</bean>  -->
+  	</bean>  
   	
   	<!-- naver mail -->
-  	  <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+  	 <!--  <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		   <property name="host" value="smtp.naver.com" />
 			<property name="port" value="465" />
 			<property name="username" value="phb7200" />
@@ -105,7 +105,7 @@
 		     	 <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
 		    	</props>
 		    </property>
- 	 </bean> 
+ 	 </bean>  -->
  	 
 	
 	<!-- Daum mail -->

@@ -52,21 +52,21 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public int passInquiry(Account account) {
+	public String passInquiry(Account account) {
 		
 		String uuid = UUID.randomUUID().toString().split("-")[0];
-		int cd = 1;
+		String cd = "success";
 		try {
 			account.setNo(mapper.passInquiry(account));
 			account.setPass(passEncoder.encode(uuid));
 			if(account.getNo() > 0) {
 				mapper.updatePass(account);			
-			}
 			
 			String setfrom = "parkhanbeen";
 			String tomail = account.getEmail();
 			String title =  "BOARD 임시비밀번호 입니다";
-			String content = "BOARD 임시비밀번호는  "+ uuid +"입니다";
+			String content = "<h2>안녕하세요."+account.getName()+"님</h2> <h3>BOARD 임시비밀번호는  "+ uuid +"입니다</h3>";
+				   content += "\r<h3>임시번호로 로그인 후 비밀번호를 변경해 주세요.</h3>";
 
 		
 			MimeMessage message = mailSender.createMimeMessage();
@@ -75,13 +75,16 @@ public class UserServiceImpl implements UserService{
 			messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
 			messageHelper.setTo(tomail); // 받는사람 이메일
 			messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
-			messageHelper.setText(content); // 메일 내용
+			messageHelper.setText(content,true); // 메일 내용
 
 			mailSender.send(message);
 			
+			}else {
+				cd = "fail";
+			}
 			
 		}catch (Exception e) {
-			cd = 0;
+			cd = "fail";
 			log.debug(e);
 		}
 		return cd;

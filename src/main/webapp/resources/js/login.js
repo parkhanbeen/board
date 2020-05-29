@@ -3,28 +3,10 @@ let registerExit = false;
 let findExit = false;
 const alphaDigit= 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 const regExp = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/; 
+const special_pattern = /[`~!@#$%^&*|\\\'\";:\/?]/gi; 
 
-
-$('#forgotId_modal').on('click', (e) =>{
-	  $('.modal-title').text('Find ID');
-	  $('#find_name').val('');
-	  $('#find_email').val('');
-	  $('.find_btn').attr('id','findId_btn');
-	  $('#find_id').css('display','none');
-	  $('#find_result').css('display','none');
-	  $('#myModal').modal('show');
-	  e.preventDefault();
-	});
-
-$('#forgotPass_modal').on('click', (e) =>{
-	$('.modal-title').text('Find Password');
-	$('#find_name').val('');
-	$('#find_email').val('');
-	$('.find_btn').attr('id','findPass_btn');
-	$('#find_id').css('display','block');
-	$('#find_result').css('display','none');
-	$('#myModal').modal('show');
-	e.preventDefault();
+$(document).on('click', '.openModal', (e) => {
+	  forgot.openModal(e);     
 });
 
 $('.message a').click( () =>{
@@ -71,9 +53,28 @@ $(document).on("click", "#register_Btn", () => {
     
 });
 
+let forgot = {
+		openModal : (e) =>{
+			if(e.target.id == 'forgotId_modal'){
+			  $('.modal-title').text('Find ID');
+			  $('.find_btn').attr('id','findId_btn');
+			  $('#find_id').css('display','none');
+			}else{
+			  $('.modal-title').text('Find Password');
+			  $('.find_btn').attr('id','findPass_btn');
+			  $('#find_id').css('display','block');
+			}
+			$('#find_name').val('');
+			$('#find_email').val('');
+			$('#find_result').css('display','none');
+			$('#myModal').modal('show');
+			e.preventDefault();
+		}
+}
+
 let register = {
 		
-		register : function () {
+		register :  () =>{
 			let param = {
 				id : $('#id_reg').val(),
 				pass : $('#pass_reg').val(),
@@ -158,10 +159,9 @@ let register = {
 		    registerExit = false;
 		},
 		
-		IdCheck : function(id){
+		IdCheck : (id) => {
 			let html = '';
-			let pTag = ''
-			let special_pattern = /[`~!@#$%^&*|\\\'\";:\/?]/gi; 
+			let pTag = '';
 			
 			$('#result_reg_msg').find('p').remove();
 			
@@ -277,7 +277,7 @@ let login = {
 		 
 	},	
 	
-	login : function () {
+	login :  () => {
 		let param = {
 			id:$('#id_lg').val(),
 			pass:$('#pass_lg').val()

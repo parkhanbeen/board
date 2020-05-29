@@ -23,8 +23,8 @@
       </div>
       <button id="login_Btn" type="button">login</button>
       <p class="message">Not registered? <a href="#">Create an account</a></p>
-      <p class="message_id">Have you forgotten your id? <a id="forgotId_modal" href="#">Forgot your ID</a></p>
-      <p class="message_password">Have you forgotten your password? <a id="forgotPass_modal" href="#">Forgot your password</a></p>
+      <p class="message_id">Have you forgotten your id? <a id="forgotId_modal" class="openModal" href="#">Forgot your ID</a></p>
+      <p class="message_password">Have you forgotten your password? <a id="forgotPass_modal" class="openModal" href="#">Forgot your password</a></p>
     </form>
   </div>
 </div>

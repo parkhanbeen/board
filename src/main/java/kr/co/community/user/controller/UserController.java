@@ -45,24 +45,15 @@ public class UserController {
 	@ResponseBody
 	@PostMapping("login")
 	public Boolean login(@RequestBody Account account, HttpServletRequest request, Model model) {
-		log.info(account.getPass());
-//		account.setPass(passEncoder.encode(account.getPass()));
-		log.info(account.getPass());
-
 		Boolean result = true;
 		HttpSession session = request.getSession();
 		Account user = service.loginAccount(account);
-		
-		log.info("사용자 암호화 비밀번호"+user.getPass());
-		log.info("입력받은 비밀번호 비교" + passEncoder.matches(account.getPass(), user.getPass()));
 		
 		if (user == null || passEncoder.matches(account.getPass(), user.getPass()) == false) {
 			result = false;
 		}else {
 			session.setAttribute("account", user);			
 		}
-		log.info(result);
-		
 		return result;
 	}
 	
@@ -70,8 +61,6 @@ public class UserController {
 	@PostMapping("register")
 	public Boolean register(@RequestBody Account account, HttpServletRequest request, Model model) {
 		account.setPass(passEncoder.encode(account.getPass()));
-		log.info(account.getName());
-		log.info(account.getEmail());
 		Boolean result = true;
 	    try {	    	
 	    	service.registerAccount(account);  	
@@ -85,8 +74,7 @@ public class UserController {
 	// 아이디 중복검사
 	@ResponseBody
 	@GetMapping("register/{id}")
-	public int idCheck(@PathVariable("id") String id){	
-		log.info(id);
+	public int idCheck(@PathVariable("id") String id){
 		return service.idCheck(id);
 	}
 	
@@ -102,10 +90,7 @@ public class UserController {
 	// 임시비밀번호 발급
 	@ResponseBody
 	@PostMapping("pass-inquiry")
-	public Map<String,String> passInquiry(@RequestBody Account account){	
-		log.info("find_id == "+account.getName());
-		log.info("find_name == "+account.getName());
-		log.info("find_email == "+account.getEmail());
+	public Map<String,String> passInquiry(@RequestBody Account account){
 		Map<String,String> findPass = new HashMap<String,String>();
 		findPass.put("pass",service.passInquiry(account));
 		return findPass;

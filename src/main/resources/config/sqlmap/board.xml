@@ -4,23 +4,27 @@
 <mapper namespace="kr.co.community.repository.mapper.BoardMapper">
 
   <select id="selectAll" resultType="board">
-    select * from tb_board 
-    order by no desc
+     select b.no, b.title, 
+            b.content, b.view_cnt, 
+            b.create_date ,a.name as writer
+	   from tb_account a , tb_board b
+       where a.no = b.writer_no
+       order by no desc
   </select>
   
-  <select id="selectAllCount" parameterType="board" resultType="int">
-     select count(*) 
-     from tb_board
+  <select id="selectAllCount" parameterType="board" resultType="int">  
+     select count(*)
+	   from tb_account a , tb_board b
+       where a.no = b.writer_no
      <if test='search != null'>
-     where
       <choose>            
             <when test='search == "all"'>
-                title like  concat('%',#{word},'%')
-                or content like concat('%',#{word},'%')                
-                or writer like concat('%',#{word},'%')               
+               and (b.title like  concat('%',#{word},'%')
+                or b.content like concat('%',#{word},'%')
+                or a.name like concat('%',#{word},'%'))
             </when>
             <otherwise>
-                ${search} like concat('%',#{word},'%')  
+               and ${search} like concat('%',#{word},'%')
             </otherwise>
         </choose>
         </if> 
@@ -29,17 +33,20 @@
   <select id="selectAllPaging" parameterType="board" resultType="board">
           SELECT T.* FROM
         (
-            SELECT * FROM  tb_board
+            select b.no, b.title, 
+                   b.content, b.view_cnt, 
+                   b.create_date ,a.name as writer
+	               from tb_account a , tb_board b
+             where a.no = b.writer_no
        <if test='search != null'>
-            where
-       	 <choose>
+       	 <choose>       	  
             <when test='search == "all"'>
-                title like  concat('%',#{word},'%')
-                or content like concat('%',#{word},'%')
-                or writer like concat('%',#{word},'%')
+               and (b.title like  concat('%',#{word},'%')
+                or b.content like concat('%',#{word},'%')
+                or a.name like concat('%',#{word},'%'))
             </when>
             <otherwise>
-                ${search} like concat('%',#{word},'%')
+               and ${search} like concat('%',#{word},'%')
             </otherwise>
          </choose>
             order by no asc
@@ -49,13 +56,17 @@
   </select>
   
   <insert id="writeBoard" parameterType="board">
-    insert into tb_board(title,content,writer,view_cnt,create_date) 
-    values(#{title},#{content},#{writer},0,sysdate())
+    insert into tb_board(title,content,view_cnt,create_date,writer_no) 
+    values(#{title},#{content},0,sysdate(),#{writerNo})
   </insert>
   
   <select id="selectDatil" parameterType="int" resultType="board">
-    select * from tb_board
-    where no = #{no}
+    select b.no, b.title, 
+           b.content, b.view_cnt, 
+           b.create_date ,a.name as writer
+	  from tb_account a , tb_board b
+     where a.no = b.writer_no
+       and b.no = #{no}
   </select>
   
   <update id="detailViewCnt" parameterType="int">

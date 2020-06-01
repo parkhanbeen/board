@@ -12,8 +12,17 @@ public class Board {
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date createDate;
 	private int viewCnt;
+	private int writerNo;
 	
 	private String search;
+	private String word; 
+	
+	public int getWriterNo() {
+		return writerNo;
+	}
+	public void setWriterNo(int writerNo) {
+		this.writerNo = writerNo;
+	}
 	public String getSearch() {
 		return search;
 	}
@@ -26,7 +35,6 @@ public class Board {
 	public void setWord(String word) {
 		this.word = word;
 	}
-	private String word; 
 	
 	private int pageNo = 1;
 	public int getPageNo() {

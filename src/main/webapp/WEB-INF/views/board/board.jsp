@@ -29,10 +29,10 @@
 <div id="board_con">
    <div id="select_con">
     <select id="select_box" name="search">
-        <option value="all">통합검색</option>
-        <option value="title">제목</option>
-        <option value="writer">작성자</option>
-        <option value="content">내용</option>
+        <option value="all"  seleted="seleted">통합검색</option>
+        <option value="title" ${b.search eq "title" ? "selected" :""}>제목</option>
+        <option value="a.name" ${b.search eq "a.name" ? "selected" :""}>작성자</option>
+        <option value="content" ${b.search eq "content" ? "selected" :""}>내용</option>
     </select>
     <c:choose>
     <c:when test="${empty b.word }">
@@ -69,6 +69,7 @@
     </table>
     <div id="pagination_con">
     <div id="pageCount"><span>게시물 총 ${pageResult.count } 개</span></div>
+    <div id="pageForm">
      <ul class="pagination" id="board_paging">
                 <c:if test="${pageResult.count != 0 && not empty b.search}">
                   <c:if test="${pageResult.prev eq true}">
@@ -91,17 +92,17 @@
                     <c:if test="${pageResult.count != 0 && empty b.search}">
                     <c:if test="${pageResult.prev eq true}">
                     <li class="paginate_button previous" id="example2_previous">
-                      <a href="list.do?pageNo=${pageResult.beginPage - 1}" aria-controls="example2" data-dt-idx="0" tabindex="0">Previous</a>
+                      <a href="list.do?pageNo=${pageResult.beginPage - 1}&search=${b.search }&word=${b.word}" aria-controls="example2" data-dt-idx="0" tabindex="0">Previous</a>
                     </li>
                     </c:if>
                     <c:forEach var="i" begin="${pageResult.beginPage}" end="${pageResult.endPage}">
                     <li class="paginate_button active">
-                      <a class="pagenumber" href="list.do?pageNo=${i}">${i}</a>
+                      <a class="pagenumber" href="list.do?pageNo=${i}&search=${b.search }&word=${b.word}">${i}</a>
                     </li>
                     </c:forEach>
                     <c:if test="${pageResult.next eq true}">
                     <li class="paginate_button next" id="example2_next">
-                      <a href="list.do?pageNo=${pageResult.endPage + 1}" aria-controls="example2" data-dt-idx="7" tabindex="0">Next</a>
+                      <a href="list.do?pageNo=${pageResult.endPage + 1}&search=${b.search }&word=${b.word}" aria-controls="example2" data-dt-idx="7" tabindex="0">Next</a>
                     </li>
                     </c:if>
                     </c:if>

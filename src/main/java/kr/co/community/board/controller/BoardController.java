@@ -2,13 +2,21 @@ package kr.co.community.board.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import kr.co.community.board.service.BoardService;
+import kr.co.community.common.interceptor.CommonInterceptor;
+import kr.co.community.repository.vo.Account;
 import kr.co.community.repository.vo.Board;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,6 +33,7 @@ public class BoardController {
 	private String word;
 	private int pageNo;
 	
+	protected Log log = LogFactory.getLog(CommonInterceptor.class);
 	
 	@RequestMapping("home.do")
 	public String home(){
@@ -34,6 +43,8 @@ public class BoardController {
 	// 전체 목록 + 페이징
 	@RequestMapping("list.do")
 	public String list(Model model,Board board){
+		board.setWord(word);
+		board.setSearch(search);
 		Map<String,Object> result = service.selectAllPaging(board);
 		model.addAttribute("list", result.get("list"));
 		model.addAttribute("pageResult",result.get("pageResult"));
@@ -45,6 +56,8 @@ public class BoardController {
 	@RequestMapping("search.do")
 	@ResponseBody
 	public Map<String,Object> search(Board board){
+		this.search = board.getSearch();
+		this.word = board.getWord();
 		Map<String,Object> result = service.selectAllPaging(board);
 		return result;  
 	}
@@ -57,7 +70,10 @@ public class BoardController {
 	
 	// 글 등록
 	@RequestMapping("write.do")
-	public String write(Board board){
+	public String write(Board board,HttpServletRequest request){
+		HttpSession session = request.getSession();
+		Account account = (Account) session.getAttribute("account");
+		board.setWriterNo(account.getNo());
 		service.writeBoard(board);
 		return UrlBasedViewResolver.REDIRECT_URL_PREFIX + "list.do";
 	}
@@ -72,9 +88,10 @@ public class BoardController {
 	@RequestMapping(value="detail.do",produces="text/plain;charset=UTF-8")
 	public String detail(Board board, Model model) throws Exception{		
 		model.addAttribute("board", service.selectDatil(board.getNo()));
+		board.setWord(word);
+		board.setSearch(search);
 		model.addAttribute("b", board);
-		search = board.getSearch();
-		word = board.getWord();
+		log.info("board param = " + board.getSearch() +","+  board.getWord());
 		pageNo = board.getPageNo();
 		return "board/detail.tiles";
 	}

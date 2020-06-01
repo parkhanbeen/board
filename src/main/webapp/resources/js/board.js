@@ -21,27 +21,6 @@ $(document).ready(()=>{
 		maxHeight: manHeight             // set maximum height of editor
 	    });
 	Date.prototype.format = function(f) {
-		// if (!this.valueOf()) return " ";
-		//
-		// const weekName = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
-		// const d = this;
-		//
-		// return f.replace(/(yyyy|yy|MM|dd|E|hh|mm|ss|a\/p)/gi, $1 => {
-		// 	switch ($1) {
-		// 		case "yyyy": return d.getFullYear();
-		// 		case "yy": return (d.getFullYear() % 1000).zf(2);
-		// 		case "MM": return (d.getMonth() + 1).zf(2);
-		// 		case "dd": return d.getDate().zf(2);
-		// 		case "E": return weekName[d.getDay()];
-		// 		case "HH": return d.getHours().zf(2);
-		// 		case "hh": return ((h = d.getHours() % 12) ? h : 12).zf(2);
-		// 		case "mm": return d.getMinutes().zf(2);
-		// 		case "ss": return d.getSeconds().zf(2);
-		// 		case "a/p": return d.getHours() < 12 ? "오전" : "오후";
-		// 		default: return $1;
-		// 	}
-		// });
-
 		const MM = this.getMonth() + 1; // getMonth() is zero-based
 		const dd = this.getDate();
 		const HH = this.getHours();
@@ -69,16 +48,13 @@ $("#write").click(()=>{location.href="/board/writeForm.do";});
 	 let paging = "";
 	 var date = new Date();
 	 search = $("#select_box").val();
-	    word = $(this).val();
+	 word = $(this).val();
 	    $("#board_tb > tbody > tr:gt(0)").remove();
 	    $("#board_paging").remove();
 	    
 	    $.ajax({
-	        type:"post",
-	        url: "/board/search.do",
+	        url: '/board/search.do',
 	        data: { "search": search, "word": word },
-	        dataType: "json",
-	        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 	        success: function (result) {
 	            $("#board_tb > tbody > tr:gt(0)").remove();
 	            $("#board_none").remove();
@@ -93,7 +69,7 @@ $("#write").click(()=>{location.href="/board/writeForm.do";});
 		            }
 	                $("#pageCount").html("<span>게시물 총 " + result.pageResult.count + " 개</span");
 	                if(result.pageResult.count !=0){
-	                paging += "<ul class='pagination' id='board_paging'>";
+	                paging += "<div id='pageForm'><ul class='pagination' id='board_paging'>";
 	                    if(result.pageResult.prev){
 	                    	paging += "<li class='paginate_button previous' id='example2_previous'>";
 	                    	paging += "<a href='list.do?pageNo="+ (result.pageResult.beginPage -1) + "&search="+search+"&word="+word+"'aria-controls='example2' data-dt-idx='0' tabindex='0'>Previous</a></li>";
@@ -107,7 +83,7 @@ $("#write").click(()=>{location.href="/board/writeForm.do";});
 	                    	paging += "<a href='list.do?pageNo="+ (result.pageResult.endPage +1) + "&search="+search+"&word="+word+"'aria-controls='example2' data-dt-idx='7' tabindex='0'>Next</a></li>";	                    	
 	                 }
 	                }
-	                paging += "</ul>"
+	                paging += "</ul></div>"
 	            $("#board_tb").append(resultVal);
 	            $("#pagination_con").append(paging);    
 	            } else {
@@ -117,10 +93,6 @@ $("#write").click(()=>{location.href="/board/writeForm.do";});
 	        }
 	    })
 	});
-
-
- 
-
 	 
 	String.prototype.string = function(len) {
 		let s = '', i = 0;
@@ -136,9 +108,6 @@ $("#write").click(()=>{location.href="/board/writeForm.do";});
 	    if (!$("#wt_title").val()) {
 	    	swal("제목을 입력해주세요.");
 	        return false;
-	    } else if (!$("#wt_writer").val()) {
-	    	swal("작성자을 입력해주세요.");
-	        return false;
 	    } else if (!$("#wt_content").val()) {
 	    	swal("내용을 입력해주세요.");
 	        return false;
@@ -148,7 +117,6 @@ $("#write").click(()=>{location.href="/board/writeForm.do";});
 	})
 	$("#write_btn_can").click(() => {location.href="/board/list.do";});
   
-  
   // detail---
   
   $(document).on("click", "#detail_list_btn", function()  {
@@ -156,6 +124,7 @@ $("#write").click(()=>{location.href="/board/writeForm.do";});
 	  if(!!$(this).data("search")){
 			url += "&search=" + $(this).data("search") + "&word=" + $(this).data("word");
 		}
+	  $('#select_box').val($(this).data("search"));
 		location.href = url;
 	});
 	$(document).on("click", "#detail_update_btn", function() {

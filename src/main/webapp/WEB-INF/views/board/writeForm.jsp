@@ -32,10 +32,10 @@
                 <span class="write_ft">제목</span>
                 <input id="wt_title" type="text" name="title" />
             </div>
-            <div class="write_grop">
+            <!-- <div class="write_grop">
                 <span class="write_ft">작성자</span>
                 <input id="wt_writer" type="text" name="writer" />
-            </div>
+            </div> -->
             <div class="write_grop">
                 <span class="write_ft">내용</span>
                 <!-- <input id="wt_content" type="text" name="content" /> -->

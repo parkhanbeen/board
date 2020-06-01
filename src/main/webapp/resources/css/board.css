@@ -161,6 +161,7 @@ body {
      list-style-type: none;
      margin-left: 35%;
      margin-top: 30px;
+     margin: 55px 0;
 }
 ul > .paginate_button{
      float: left;
@@ -200,9 +201,12 @@ ul > .paginate_button{
 }
 
 #pageCount{
-	margin-top: 20px;
+	margin: -20px auto;
     position: absolute;
     color: #195f9c;
+}
+#pageForm{
+	margin: 35px 450px;
 }
 
 .skin-blue .main-header .navbar {

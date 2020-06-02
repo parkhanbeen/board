@@ -14,6 +14,7 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
  <script src="/resources/js/board.js"></script>
+ <script src="/resources/js/myPage.js"></script>
 
  
  <!-- include libraries(jQuery, bootstrap) -->
@@ -25,3 +26,4 @@
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
 <link rel="shortcut icon" href="#">
+

@@ -42,6 +42,7 @@ public class UserController {
 	public String loginForm(){
 			return "login/login";  
 		}
+	
 
 	@ResponseBody
 	@PostMapping("login")

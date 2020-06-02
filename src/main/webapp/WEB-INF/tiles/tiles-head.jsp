@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="/dist/css/skins/skin-blue.min.css">
   <link rel="stylesheet" href="/resources/css/board.css"> 
+  <link rel="stylesheet" href="/resources/css/mypage.css">
   
   <!-- Google Font -->
   <link rel="stylesheet"

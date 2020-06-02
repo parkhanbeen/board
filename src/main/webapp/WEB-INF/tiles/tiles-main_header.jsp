@@ -118,7 +118,7 @@
           <!-- User Account Menu -->
           <li class="dropdown user user-menu">
             <!-- Menu Toggle Button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" id="myPage_btn" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
               <img src="/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
@@ -168,3 +168,48 @@
       </div>
     </nav>
   </header>
+  
+  
+  <div id="modal">
+    <div class="modal-bg">
+        <div class="modal-cont">
+            <a href="#" class="close close1">
+                <svg viewBox="0 0 24 24">
+                  <path id="XMLID_6_" d="M23.4,21.9l-10-9.9l10-9.9c0.4-0.4,0.4-1,0-1.4c-0.4-0.4-1-0.4-1.4,0l-10,9.9L2,0.8c-0.4-0.4-1-0.4-1.4,0
+	c-0.4,0.4-0.4,1,0,1.4l10,9.9l-10,9.9c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.5,0.3,0.7,0.3c0.3,0,0.5-0.1,0.7-0.3l10-9.9l10,9.9
+	c0.2,0.2,0.4,0.3,0.7,0.3c0.3,0,0.5-0.1,0.7-0.3C23.8,23,23.8,22.3,23.4,21.9z"/>  
+                </svg>
+            </a>
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">My Page</h3>
+                </div>
+
+                <form role="form">
+                    <div class="card-body">
+                     <div class="pull-left">
+                        <!-- User Image -->
+                        <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                      </div>
+                      <div class="form-group">
+							<label for="inputSkills" class="control-label">인센티브</label>
+								<input name="incentive" type="text" class="form-control"
+									id="detailIncent" placeholder="예)30" disabled>
+						</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10"></div>
+					</div>
+
+                    </div>
+                    <div class="card-footer">
+                    </div>
+                        <button type="button" class="btn btn-primary">수정</button>
+                        <button type="button" class="btn btn-primary">비밀번호 변경</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+  
+  

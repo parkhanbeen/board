@@ -157,3 +157,23 @@ $("#write").click(()=>{location.href="/board/writeForm.do";});
 	$("#update_btn_cancel").click(function(){
 		location.href="/board/detail.do?no=" + $(this).data("no") + "&pageNo=" + $(this).data("pageno") + "&search=" + $(this).data("search") + "&word=" + $(this).data("word"); 
 	});
+    
+	$(document).on("click","#signOut_btn" , () =>{
+		$.ajax({
+			url:'/users/logout',
+			type:'delete',
+			async: true
+		});
+			swal({
+				text : '로그아웃 되었습니다.',
+				icon : 'info',
+				confirm : {
+					text : '확인',
+					value : true
+				}
+				}).then((result)=>{
+					if(result){
+						location.href="/board/list.do";										
+					}
+				});			
+	});

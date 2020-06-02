@@ -40,7 +40,10 @@
         <h3 class="control-sidebar-heading">Tasks Progress</h3>
         <ul class="control-sidebar-menu">
           <li>
-            <a href="javascript:;">
+             <button id="signOut_btn" style="background-color: #222d32;width: 230px;"><h3 class="control-sidebar-heading">Sign Out</h3></button>
+          
+          
+            <!-- <a href="javascript:;">
               <h4 class="control-sidebar-subheading">
                 Custom Template Design
                 <span class="pull-right-container">
@@ -51,7 +54,7 @@
               <div class="progress progress-xxs">
                 <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
               </div>
-            </a>
+            </a> -->
           </li>
         </ul>
         <!-- /.control-sidebar-menu -->

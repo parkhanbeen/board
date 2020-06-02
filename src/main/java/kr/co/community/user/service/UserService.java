@@ -1,6 +1,8 @@
 package kr.co.community.user.service;
 
 
+import javax.servlet.http.HttpSession;
+
 import kr.co.community.repository.vo.Account;
 
 public interface UserService {
@@ -14,5 +16,7 @@ public interface UserService {
     Account loginAccount(Account account);
     
     void registerAccount(Account account) throws Exception;
+    
+    void logout(HttpSession session) throws Exception;
 
 }

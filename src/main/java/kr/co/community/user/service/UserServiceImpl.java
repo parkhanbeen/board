@@ -7,6 +7,7 @@ import kr.co.community.repository.vo.Account;
 import java.util.UUID;
 
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -88,6 +89,11 @@ public class UserServiceImpl implements UserService{
 			log.debug(e);
 		}
 		return cd;
+	}
+
+	@Override
+	public void logout(HttpSession session) throws Exception {
+		session.invalidate();
 	}
 	
 	

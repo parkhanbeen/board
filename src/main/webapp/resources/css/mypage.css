@@ -158,3 +158,10 @@
     height: 150px;
 }
 
+.img_modify{
+	outline: 2px dashed #92b0b3;
+    outline-offset: -10px;
+    text-align: center;
+    transition: all .15s ease-in-out;
+    background-color: gray;
+}

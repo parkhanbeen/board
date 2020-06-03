@@ -188,9 +188,10 @@
 
                 <form role="form">
                     <div class="card-body">
-                     <div class="pull-left">
+                     <div id="userImg" class="pull-left">
                         <!-- User Image -->                        
-                        <img src="/img/${account.no}.png" onerror="this.src='/img/default.png'" class="img-circle" alt="User Image">
+                        <img id="img_modify" src="/img/${account.no}.png" onerror="this.src='/img/default.png'" class="img-circle" alt="User Image">
+                        <input id="user_imgUpload" type="file" style="display:none";>
                       </div>
                     <div class="profile-user-info">
                       <div class="profile-info-row">                
@@ -199,11 +200,11 @@
 					  </div>
 					  <div class="profile-info-row">                
 						<div class="profile-info-name">userName</div>
-						<div class="profile-info-value">${account.name }</div>					    
+						<div id="userName" class="profile-info-value">${account.name }</div>					    
 					  </div>
 					  <div class="profile-info-row">                
 						<div class="profile-info-name">email</div>
-						<div class="profile-info-value">${account.email }</div>					    
+						<div id="userEmail" class="profile-info-value">${account.email }</div>					    
 					  </div>
 					  <div class="profile-info-row">                
 						<div class="profile-info-name">createDate</div>
@@ -213,8 +214,10 @@
 
                     </div>
                     <div class="card-footer">
-                        <button type="button" class="btn btn-primary">수정</button>
-                        <button type="button" class="btn btn-primary">비밀번호 변경</button>
+                        <button type="button" id="modify_btn" class="btn btn-primary">수정</button>
+                        <button type="button" id="modifySuccess_btn" class="btn btn-primary" style="display:none">수정완료</button>
+                        <button type="button" id="modifyCancle_btn" class="btn btn-danger" style="display:none">취소</button>
+                        <button type="button" id="modifyPass_btn" class="btn btn-primary">비밀번호 변경</button>
                     </div>
                 </form>
             </div>

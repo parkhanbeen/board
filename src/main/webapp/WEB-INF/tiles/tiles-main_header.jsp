@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <header class="main-header">
     <!-- Logo -->
@@ -35,7 +36,7 @@
                     <a href="#">
                       <div class="pull-left">
                         <!-- User Image -->
-                        <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="/img/${account.no}.png" onerror="this.src='/img/default.png'" class="img-circle" alt="User Image">
                       </div>
                       <!-- Message title and timestamp -->
                       <h4>
@@ -120,14 +121,14 @@
             <!-- Menu Toggle Button -->
             <a href="#" id="myPage_btn" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="/img/${account.no}.png" onerror="this.src='/img/default.png'" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Park han been</span>
+              <span class="hidden-xs">${account.name}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="/img/${account.no}.png" onerror="this.src='/img/default.png'" class="img-circle" alt="User Image">
 
                 <p>
                   Park han been - Web Developer
@@ -188,23 +189,33 @@
                 <form role="form">
                     <div class="card-body">
                      <div class="pull-left">
-                        <!-- User Image -->
-                        <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <!-- User Image -->                        
+                        <img src="/img/${account.no}.png" onerror="this.src='/img/default.png'" class="img-circle" alt="User Image">
                       </div>
-                      <div class="form-group">
-							<label for="inputSkills" class="control-label">인센티브</label>
-								<input name="incentive" type="text" class="form-control"
-									id="detailIncent" placeholder="예)30" disabled>
-						</div>
-					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-10"></div>
+                    <div class="profile-user-info">
+                      <div class="profile-info-row">                
+						<div class="profile-info-name">userID</div>
+						<div class="profile-info-value">${account.id }</div>					    
+					  </div>
+					  <div class="profile-info-row">                
+						<div class="profile-info-name">userName</div>
+						<div class="profile-info-value">${account.name }</div>					    
+					  </div>
+					  <div class="profile-info-row">                
+						<div class="profile-info-name">email</div>
+						<div class="profile-info-value">${account.email }</div>					    
+					  </div>
+					  <div class="profile-info-row">                
+						<div class="profile-info-name">createDate</div>
+						<div class="profile-info-value"><fmt:formatDate value="${account.createDate }" pattern="yyyy-MM-dd HH:mm:ss"/></div>					    
+					  </div>
 					</div>
 
                     </div>
                     <div class="card-footer">
-                    </div>
                         <button type="button" class="btn btn-primary">수정</button>
                         <button type="button" class="btn btn-primary">비밀번호 변경</button>
+                    </div>
                 </form>
             </div>
         </div>

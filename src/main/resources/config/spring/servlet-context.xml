@@ -29,6 +29,7 @@
     <mvc:resources mapping="/resources/**" location="/resources/"/>
 	<mvc:resources mapping="/bower_components/**" location="/resources/bower_components/"/>
 	<mvc:resources mapping="/dist/**" location="/resources/dist/"/>
+	<mvc:resources mapping="/img/**" location="/resources/img/"/>
 	<mvc:resources mapping="/plugins/**" location="/resources/plugins/"/>
 
 	<bean id="viewResolver"

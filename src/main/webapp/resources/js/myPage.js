@@ -30,13 +30,15 @@ $(".close").click(()=>{
 // 모달 
 
 
+$('#img_modify').click(()=>{
+	if($('#modify_btn').css('display') =='none'){
+		$('#user_imgUpload').trigger('click');	
+	}
+});		
+
+
 $(document).on('click','#modify_btn',()=>{
 	myPage.changInfoForm();
-	$('#img_modify').click(()=>{
-      if($('#modify_btn').css('display') =='none'){
-		  $('#user_imgUpload').trigger('click');	
-	    }
-	});		
 });
 
 $(document).on('click','#modifySuccess_btn',()=>{

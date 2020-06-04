@@ -58,7 +58,7 @@ $(document).on('click','#modifyPass_btn',()=>{
 	
 });
 
-$('.img_modify')
+$('#img_modify')
 .on("dragover", dragOver)
 .on("dragleave", dragOver)
 .on("drop", uploadFiles);
@@ -94,7 +94,10 @@ function uploadFiles(e) {
               $(e.target).css({
           "background-image": "url(" + window.URL.createObjectURL(files[0]) + ")",
           "outline": "none",
-          "background-size": "100% 100%"
+          "background-size": "100% 100%"          
+      });
+      $(e.target).attr({
+    	  "src":"url(" + window.URL.createObjectURL(files[0]) + ")"      
       });
   }else{
     alert('이미지가 아닙니다.');

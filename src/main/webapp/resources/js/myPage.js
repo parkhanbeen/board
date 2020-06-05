@@ -85,7 +85,7 @@ function uploadFiles(e) {
   dragOver(e);
 
   e.dataTransfer = e.originalEvent.dataTransfer;
-  var files = e.target.files || e.dataTransfer.files;
+  let files = e.target.files || e.dataTransfer.files;
   if (files.length > 1) {
       alert('하나만 올려라.');
       return;

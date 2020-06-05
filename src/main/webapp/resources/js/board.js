@@ -46,7 +46,7 @@ $("#write").click(()=>{location.href="/board/writeForm.do";});
  $("#word_content").keyup(function(){
 	 let resultVal = "";
 	 let paging = "";
-	 var date = new Date();
+	 let date = new Date();
 	 search = $("#select_box").val();
 	 word = $(this).val();
 	    $("#board_tb > tbody > tr:gt(0)").remove();

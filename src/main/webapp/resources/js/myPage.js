@@ -17,8 +17,6 @@ $(document).on('click', '#myPage_btn', (e) => {
 
 $(".close").click(()=>{
 	  $("#modal").addClass("out");
-//	  $("body").css("overflow", "auto");
-//	  $("html").css("overflow", "auto");
 	  $(".modal-bg").css("overflow", "scroll");
 	  setTimeout(() => {
 		  $("#board_paging").find('.pagination_li').addClass('active');		

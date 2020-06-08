@@ -38,10 +38,8 @@
             </div> -->
             <div class="write_grop">
                 <span class="write_ft">내용</span>
-                <!-- <input id="wt_content" type="text" name="content" /> -->
                      <textarea style="resize: none;" class="summernote" id="wt_content"  name="content"></textarea>
-                
-               <!-- <textarea name="content" class="summernote" id="summernote" ></textarea> -->
+
             </div>
         </div>
         <div>

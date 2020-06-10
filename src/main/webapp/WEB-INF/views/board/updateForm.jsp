@@ -45,9 +45,7 @@
             <tr>
                 <td>내용</td>
                 <td id="update_content_td">
-                    
-                    <%-- <input id="update_content" class="update_content" type="text" name="content" placeholder="${board.content }" />   --%>   
-                    <textarea style="resize: none;" class="summernote" id="update_content"  name="content" data-content="${board.content }"></textarea>              
+                    <textarea style="resize: none;" class="summernote" id="update_content"  name="content" data-content="${board.content }"></textarea>
                 </td>
             </tr>
             <tr>

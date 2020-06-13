@@ -106,8 +106,8 @@ function uploadFiles(e) {
 var myPage = {
 		
 	changInfoForm : () =>{
-	    userName = $("#userName").text() == ''? $("#userName").find('input').attr('placeholder') : $("#userName").text();
-	    userEmail = $("#userEmail").text() == ''? $("#userEmail").find('input').attr('placeholder') : $("#userEmail").text();
+	    userName = $('#userName').text() == ''? $('#userName').find('input').attr('placeholder') : $("#userName").text();
+	    userEmail = $('#userEmail').text() == ''? $('#userEmail').find('input').attr('placeholder') : $("#userEmail").text();
 		
 	     $("#userName").text('');
 	     $("#userName").append('<input type="text" placeholder="'+userName+'">');

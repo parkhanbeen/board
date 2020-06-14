@@ -106,8 +106,8 @@ function uploadFiles(e) {
 var myPage = {
 		
 	changInfoForm : () =>{
-	    userName = $('#userName').text() == ''? $('#userName').find('input').attr('placeholder') : $("#userName").text();
-	    userEmail = $('#userEmail').text() == ''? $('#userEmail').find('input').attr('placeholder') : $("#userEmail").text();
+	    userName = $('#userName').text() == ''? $('#userName').find('input').attr('placeholder') : $('#userName').text();
+	    userEmail = $('#userEmail').text() == ''? $('#userEmail').find('input').attr('placeholder') : $('#userEmail').text();
 		
 	     $("#userName").text('');
 	     $("#userName").append('<input type="text" placeholder="'+userName+'">');
@@ -115,11 +115,11 @@ var myPage = {
 	     $("#userEmail").text('');
 	     $("#userEmail").append('<input type="text" placeholder="'+userEmail+'">');
 	     
-	     $("#img_modify").addClass("img_modify");
-	     $("#modifySuccess_btn").show();
-	     $("#modifyCancle_btn").show();
-	     $("#modify_btn").hide();
-	     $("#modifyPass_btn").hide();
+	     $('#img_modify').addClass('img_modify');
+	     $('#modifySuccess_btn').show();
+	     $('#modifyCancle_btn').show();
+	     $('#modify_btn').hide();
+	     $('#modifyPass_btn').hide();
 	 },
 	 
 	 changInfoValid : () =>{

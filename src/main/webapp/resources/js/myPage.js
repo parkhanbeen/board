@@ -124,9 +124,9 @@ var myPage = {
 	 
 	 changInfoValid : () =>{
 		 
-		 if($("#userEmail").find('input').val()){
+		 if($('#userEmail').find('input').val()){
 			 if(!regExpEmail.test($("#userEmail").find('input').val())) { 
-				 swal("이메일 주소가 유효하지 않습니다"); 
+				 swal('이메일 주소가 유효하지 않습니다');
 				 $('#userEmail').focus(); 
 				 modifyInfoExit = true;
 				 return; 
@@ -136,7 +136,7 @@ var myPage = {
 		  modifyInfoExit = false;
 	 },
 	 changInfoCancle : () =>{
-		 $("#img_modify").removeClass("img_modify");
+		 $('#img_modify').removeClass('img_modify');
 		 $("#modify_btn").show();
 		 $("#modifyPass_btn").show();
 		 $("#modifySuccess_btn").hide();

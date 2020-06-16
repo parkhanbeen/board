@@ -137,10 +137,10 @@ var myPage = {
 	 },
 	 changInfoCancle : () =>{
 		 $('#img_modify').removeClass('img_modify');
-		 $("#modify_btn").show();
-		 $("#modifyPass_btn").show();
-		 $("#modifySuccess_btn").hide();
-	     $("#modifyCancle_btn").hide();
+		 $('#modify_btn').show();
+		 $('#modifyPass_btn').show();
+		 $('#modifySuccess_btn').hide();
+	     $('#modifyCancle_btn').hide();
 		 
 	 }
 }

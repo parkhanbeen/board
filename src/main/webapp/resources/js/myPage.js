@@ -10,7 +10,7 @@ $(document).on('click', '#myPage_btn', (e) => {
 	$("html").css("overflow", "hidden");
 	myPage.changInfoCancle();
 	setTimeout(() => {
-		$("#board_paging").find('.active').attr('class','paginate_button').addClass("pagination_li");		
+		$('#board_paging').find('.active').attr('class','paginate_button').addClass('pagination_li');
 	}, 700);
 
 });

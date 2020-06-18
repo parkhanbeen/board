@@ -5,7 +5,7 @@ const regExpEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-
 
 
 $(document).on('click', '#myPage_btn', (e) => {
-	$("#modal").removeClass().addClass("one");
+	$('#modal').removeClass().addClass('one');
     $("body").css("overflow", "hidden");
 	$("html").css("overflow", "hidden");
 	myPage.changInfoCancle();
@@ -22,7 +22,7 @@ $(".close").click(()=>{
 		  $("#board_paging").find('.pagination_li').addClass('active');		
 	}, 700);
 	  $("#userName").empty().text(userName);
-	  $("#userEmail").empty().text(userEmail);
+	  $('#userEmail').empty().text(userEmail);
 });
 
 // 모달 

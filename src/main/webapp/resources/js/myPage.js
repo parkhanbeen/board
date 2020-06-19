@@ -15,13 +15,13 @@ $(document).on('click', '#myPage_btn', (e) => {
 
 });
 
-$(".close").click(()=>{
+$('.close').click(()=>{
 	  $("#modal").addClass("out");
 	  $(".modal-bg").css("overflow", "scroll");
 	  setTimeout(() => {
 		  $("#board_paging").find('.pagination_li').addClass('active');		
 	}, 700);
-	  $("#userName").empty().text(userName);
+	  $('#userName').empty().text(userName);
 	  $('#userEmail').empty().text(userEmail);
 });
 

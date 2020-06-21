@@ -6,8 +6,8 @@ const regExpEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-
 
 $(document).on('click', '#myPage_btn', (e) => {
 	$('#modal').removeClass().addClass('one');
-    $("body").css("overflow", "hidden");
-	$("html").css("overflow", "hidden");
+    $('body').css('overflow', 'hidden');
+	$('html').css('overflow', 'hidden');
 	myPage.changInfoCancle();
 	setTimeout(() => {
 		$('#board_paging').find('.active').attr('class','paginate_button').addClass('pagination_li');

@@ -19,7 +19,7 @@ $('.close').click(()=>{
 	  $('#modal').addClass('out');
 	  $('.modal-bg').css('overflow', 'scroll');
 	  setTimeout(() => {
-		  $("#board_paging").find('.pagination_li').addClass('active');		
+		  $('#board_paging').find('.pagination_li').addClass('active');
 	}, 700);
 	  $('#userName').empty().text(userName);
 	  $('#userEmail').empty().text(userEmail);
@@ -57,9 +57,9 @@ $(document).on('click','#modifyPass_btn',()=>{
 });
 
 $('#img_modify')
-.on("dragover", dragOver)
-.on("dragleave", dragOver)
-.on("drop", uploadFiles);
+.on('dragover', dragOver)
+.on('dragleave', dragOver)
+.on('drop', uploadFiles);
 
 function dragOver(e){
   e.stopPropagation();

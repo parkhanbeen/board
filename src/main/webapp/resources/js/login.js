@@ -22,7 +22,7 @@ $(document).on("click", "#login_Btn", () => {
     
 });
 
-$(document).on("click", "#findId_btn ,#findPass_btn", () => {
+$(document).on('click', '#findId_btn' ,'#findPass_btn', () => {
 	$('#find_result').css('display','none');
 	login.findValid();
 	 if(findExit){
@@ -30,7 +30,7 @@ $(document).on("click", "#findId_btn ,#findPass_btn", () => {
 	    }
 });
 
-$(document).on("keyup", ".login_txt", () => {
+$(document).on('keyup', ".login_txt", () => {
     login.hideMsg();
 });
 

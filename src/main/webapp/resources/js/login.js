@@ -131,7 +131,7 @@ let register = {
 		    
 		    for (i=0; i<$('#pass_reg').val().length; i++) {
 		        if (alphaDigit.indexOf($('#pass_reg').val().substring(i, i+1)) < 0) {
-		        swal("비밀번호는 영문과 숫자의 조합만 사용할 수 있습니다.");
+		        swal('비밀번호는 영문과 숫자의 조합만 사용할 수 있습니다.');
 		    	$('#pass_reg').val('');
 		        $('#pass_reg').focus();
 		        registerExit = true;
@@ -140,17 +140,17 @@ let register = {
 		      }
 		    
 		    if(!$('#name_reg').val()){
-		    	swal("이름을 입력해주세요.");		
+		    	swal('이름을 입력해주세요.');
 		    	registerExit = true;
 		    	return;
 			}
 		    if(!$('#email_reg').val()){
-		    	swal("이메일을 입력해주세요.");		
+		    	swal('이메일을 입력해주세요.');
 		    	registerExit = true;
 		    	return;
 			}else{
 				 if(!regExp.test($('#email_reg').val())) { 
-					 swal("이메일 주소가 유효하지 않습니다"); 
+					 swal('이메일 주소가 유효하지 않습니다');
 				      registerExit = true;
 				      $('#email_reg').focus(); 
 				      return; 

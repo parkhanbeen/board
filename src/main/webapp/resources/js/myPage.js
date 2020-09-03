@@ -30,9 +30,23 @@ $('.close').click(()=>{
 
 $('#img_modify').click(()=>{
 	if($('#modify_btn').css('display') =='none'){
-		$('#user_imgUpload').trigger('click');	
+		$('#user_imgUpload').trigger('click');
 	}
-});		
+});
+
+function readURL(input) {
+	if (input.files && input.files[0]) {
+		let reader = new FileReader();
+		reader.onload = function(e) {
+			$('#img_modify').attr('src', e.target.result);
+		}
+		reader.readAsDataURL(input.files[0]);
+	}
+}
+
+$('#user_imgUpload').change(function() {
+	readURL(this);
+});
 
 
 $(document).on('click','#modify_btn',()=>{
@@ -103,7 +117,7 @@ function uploadFiles(e) {
   }
 }
 
-var myPage = {
+let myPage = {
 		
 	changInfoForm : () =>{
 	    userName = $('#userName').text() == ''? $('#userName').find('input').attr('placeholder') : $('#userName').text();
@@ -141,7 +155,8 @@ var myPage = {
 		 $('#modifyPass_btn').show();
 		 $('#modifySuccess_btn').hide();
 	     $('#modifyCancle_btn').hide();
-		 
+		 $('#img_modify').attr('src', '/img/'+$('#img_modify').data("no")+'.png');
+
 	 }
 }
 

@@ -190,7 +190,7 @@
                     <div class="card-body">
                      <div id="userImg" class="pull-left">
                         <!-- User Image -->                        
-                        <img id="img_modify" src="/img/${account.no}.png" onerror="this.src='/img/default.png'" class="img-circle" alt="User Image">
+                        <img id="img_modify" data-no="${account.no}" src="/img/${account.no}.png" onerror="this.src='/img/default.png'" class="img-circle" alt="User Image">
                         <input id="user_imgUpload" type="file" style="display:none";>
                       </div>
                     <div class="profile-user-info">

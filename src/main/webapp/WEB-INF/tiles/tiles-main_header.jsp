@@ -36,7 +36,7 @@
                     <a href="#">
                       <div class="pull-left">
                         <!-- User Image -->
-                        <img src="/img/${account.no}.png" onerror="this.src='/img/default.png'" class="img-circle" alt="User Image">
+                        <img src="/local_images/${account.no}.jpg" onerror="this.src='/local_images/default.jpg'" class="img-circle" alt="User Image">
                       </div>
                       <!-- Message title and timestamp -->
                       <h4>
@@ -121,14 +121,14 @@
             <!-- Menu Toggle Button -->
             <a href="#" id="myPage_btn" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="/img/${account.no}.png" onerror="this.src='/img/default.png'" class="user-image" alt="User Image">
+              <img src="/local_images/${account.no}.jpg" onerror="this.src='/local_images/default.jpg'" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">${account.name}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="/img/${account.no}.png" onerror="this.src='/img/default.png'" class="img-circle" alt="User Image">
+                <img src="/local_images/${account.no}.jpg" onerror="this.src='/local_images/default.jpg'" class="img-circle" alt="User Image">
 
                 <p>
                   Park han been - Web Developer
@@ -189,8 +189,8 @@
                 <form role="form">
                     <div class="card-body">
                      <div id="userImg" class="pull-left">
-                        <!-- User Image -->                        
-                        <img id="img_modify" data-no="${account.no}" src="/img/${account.no}.png" onerror="this.src='/img/default.png'" class="img-circle" alt="User Image">
+                        <!-- User Image -->
+                        <img id="img_modify" data-no="${account.no}" src="/local_images/${account.no}.jpg" onerror="this.src='/local_images/default.jpg'" class="img-circle" alt="User Image">
                         <input id="user_imgUpload" type="file" style="display:none";>
                       </div>
                     <div class="profile-user-info">

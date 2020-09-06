@@ -1,5 +1,6 @@
 package kr.co.community.user.controller;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,13 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import kr.co.community.common.interceptor.CommonInterceptor;
 import kr.co.community.repository.vo.Account;
@@ -35,6 +30,16 @@ public class UserController {
 
 	@Autowired
 	BCryptPasswordEncoder passEncoder;
+
+	public String OS = System.getProperty("os.name").toLowerCase();
+
+	public boolean isWindows() {
+		return (OS.indexOf("win") >= 0);
+	}
+
+	public boolean isMac() {
+		return (OS.indexOf("mac") >= 0);
+	}
 
 
 	// login 페이지 이동
@@ -66,11 +71,27 @@ public class UserController {
 		Boolean result = true;
 	    try {	    	
 	    	service.registerAccount(account);  	
-	    	return result;
 	    }catch (Exception e) {
 			log.debug(e);
 			result = false;
+		}finally {
 			return result;
+		}
+	}
+
+	@RequestMapping(value = "users/{id}", method = RequestMethod.PUT)
+	public void updateStaff(@PathVariable("id") String id,@RequestBody Account account) throws Exception{
+		try {
+			account.setId(id);
+			service.updateUsers(account);
+			String fileName = account.getNo() + ".jpg";
+			if (isWindows()==true) {
+				account.getAttach().transferTo(new File("c:/board/upload/profile/" + fileName));
+			} else if (isMac()==true) {
+				account.getAttach().transferTo(new File("/Users/board/upload/profile/" + fileName));
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	// 아이디 중복검사
@@ -84,7 +105,7 @@ public class UserController {
 	@ResponseBody
 	@PostMapping("id-inquiry")
 	public Map<String,String> idInquiry(@RequestBody Account account){	
-		Map<String,String> findId = new HashMap<String,String>();
+		Map<String,String> findId = new HashMap<>();
 		findId.put("id",service.idInquiry(account));
 		return findId;
 	}
@@ -93,7 +114,7 @@ public class UserController {
 	@ResponseBody
 	@PostMapping("pass-inquiry")
 	public Map<String,String> passInquiry(@RequestBody Account account){
-		Map<String,String> findPass = new HashMap<String,String>();
+		Map<String,String> findPass = new HashMap<>();
 		findPass.put("pass",service.passInquiry(account));
 		return findPass;
 	}

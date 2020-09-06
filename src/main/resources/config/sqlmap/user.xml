@@ -16,6 +16,13 @@
       set pass = #{pass}
        where no = #{no}    
     </update>
+
+    <update id="updateUsers" parameterType="account">
+    update tb_account
+      set email = #{email}
+          name  = #{name}
+       where id = #{id}
+    </update>
     
 	<select id="idInquiry" parameterType="account" resultType="String">
     select id

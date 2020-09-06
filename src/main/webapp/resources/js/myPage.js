@@ -155,7 +155,7 @@ let myPage = {
 		 $('#modifyPass_btn').show();
 		 $('#modifySuccess_btn').hide();
 	     $('#modifyCancle_btn').hide();
-		 $('#img_modify').attr('src', '/img/'+$('#img_modify').data("no")+'.png');
+		 $('#img_modify').attr('src', '/local_images/'+$('#img_modify').data("no")+'.jpg');
 
 	 }
 }

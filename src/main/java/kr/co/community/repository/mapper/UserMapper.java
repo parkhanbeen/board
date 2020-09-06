@@ -17,4 +17,6 @@ public interface UserMapper {
     
     void registerAccount(Account account);
 
+    void updateUsers(Account account);
+
 }

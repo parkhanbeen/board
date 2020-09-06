@@ -19,4 +19,6 @@ public interface UserService {
     
     void logout(HttpSession session) throws Exception;
 
+    void updateUsers(Account account) throws Exception;
+
 }

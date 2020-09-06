@@ -4,6 +4,7 @@ import java.util.Date;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Getter
@@ -16,6 +17,7 @@ public class Account {
 	private String email;
 	private String resignation;
 	private Date createDate;
+	private MultipartFile attach;
 	
 
 }

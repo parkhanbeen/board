@@ -95,6 +95,11 @@ public class UserServiceImpl implements UserService{
 	public void logout(HttpSession session) throws Exception {
 		session.invalidate();
 	}
-	
-	
+
+	@Override
+	public void updateUsers(Account account) throws Exception {
+		mapper.updateUsers(account);
+	}
+
+
 }

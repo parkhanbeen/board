@@ -10,7 +10,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="/local_images/${account.no}.jpg" onerror="this.src='/local_images/default.jpg'" class="img-circle" alt="User Image">
+          <img src="/local_images/${account.no}.jpg" onerror="this.src='/local_images/default.jpg'" class="img-circle proImg" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>${account.name}</p>

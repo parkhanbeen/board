@@ -19,8 +19,13 @@
 
     <update id="updateUsers" parameterType="account">
     update tb_account
-      set email = #{email}
-          name  = #{name}
+      set 
+	      <if test='email != null'>
+	         email = #{email},
+	      </if>
+	      <if test='name != null'>
+	          name  = #{name}
+	      </if>    
        where id = #{id}
     </update>
     

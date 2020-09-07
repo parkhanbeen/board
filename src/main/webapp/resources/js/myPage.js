@@ -53,11 +53,42 @@ $(document).on('click','#modify_btn',()=>{
 	myPage.changInfoForm();
 });
 
+// mypage 수정완료 클릭
 $(document).on('click','#modifySuccess_btn',()=>{
 	myPage.changInfoValid();
 	if(modifyInfoExit){
 		return;
 	}
+	
+	let form = new FormData($("#userForm")[0]);
+	
+	form.append('no',$('#img_modify').data("no"));
+	form.append('name',$('#userInputName').val() == '' ? userName : $('#userInputName').val());
+	form.append('email',$('#userInputEmail').val() == '' ? userEmail : $('#userInputEmail').val());
+	
+	$('.proImg').attr('src', '');
+	
+	$.ajax({
+		url: '/users/' + $('#userId').text(),
+		type:'post',
+		data: form,
+		enctype: 'multipart/form-data',
+	    processData: false,
+	    contentType: false,
+	    cache: false,
+	}).done(function (result) {
+		if(result=='success'){
+			setTimeout(() => {
+				$('.proImg').attr('src', '/local_images/'+$('#img_modify').data("no")+'.jpg');
+				swal('수정되었습니다.');
+			}, 50);			
+		}else{
+			swal('수정중 오류발생');
+		}
+		
+	});
+	
+	
 });
 
 $(document).on('click','#modifyCancle_btn',()=>{
@@ -124,10 +155,10 @@ let myPage = {
 	    userEmail = $('#userEmail').text() == ''? $('#userEmail').find('input').attr('placeholder') : $('#userEmail').text();
 		
 	     $("#userName").text('');
-	     $("#userName").append('<input type="text" placeholder="'+userName+'">');
+	     $("#userName").append('<input id="userInputName" type="text" placeholder="'+userName+'">');
 	     
 	     $("#userEmail").text('');
-	     $("#userEmail").append('<input type="text" placeholder="'+userEmail+'">');
+	     $("#userEmail").append('<input id="userInputEmail" type="text" placeholder="'+userEmail+'">');
 	     
 	     $('#img_modify').addClass('img_modify');
 	     $('#modifySuccess_btn').show();

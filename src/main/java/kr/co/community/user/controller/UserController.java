@@ -64,6 +64,7 @@ public class UserController {
 		return result;
 	}
 	
+	@SuppressWarnings("finally")
 	@ResponseBody
 	@PostMapping("register")
 	public Boolean register(@RequestBody Account account, HttpServletRequest request, Model model) {
@@ -78,20 +79,31 @@ public class UserController {
 			return result;
 		}
 	}
-
-	@RequestMapping(value = "users/{id}", method = RequestMethod.PUT)
-	public void updateStaff(@PathVariable("id") String id,@RequestBody Account account) throws Exception{
+	
+	@SuppressWarnings("finally")
+	@ResponseBody
+	@PostMapping("{id}")
+	public String updateStaff(@PathVariable("id") String id,Account account) throws Exception{
+		String result = null;
 		try {
+			log.info("id==>"+id);
+			log.info("account==>"+account.toString());
 			account.setId(id);
-			service.updateUsers(account);
+			if(account.getName() != null || account.getEmail() != null) {
+				service.updateUsers(account);				
+			}
 			String fileName = account.getNo() + ".jpg";
 			if (isWindows()==true) {
 				account.getAttach().transferTo(new File("c:/board/upload/profile/" + fileName));
 			} else if (isMac()==true) {
 				account.getAttach().transferTo(new File("/Users/board/upload/profile/" + fileName));
 			}
+			result = "success";
 		}catch (Exception e) {
+			result = "fail";
 			e.printStackTrace();
+		}finally {
+			return result;
 		}
 	}
 	// 아이디 중복검사

@@ -54,7 +54,7 @@ public class UserController {
 	public Boolean login(@RequestBody Account account, HttpServletRequest request, Model model) {
 		Boolean result = true;
 		HttpSession session = request.getSession();
-		Account user = service.loginAccount(account);
+		Account user = service.detailUsers(account.getId());
 		
 		if (user == null || passEncoder.matches(account.getPass(), user.getPass()) == false) {
 			result = false;
@@ -83,20 +83,23 @@ public class UserController {
 	@SuppressWarnings("finally")
 	@ResponseBody
 	@PostMapping("{id}")
-	public String updateStaff(@PathVariable("id") String id,Account account) throws Exception{
+	public String updateUsers(@PathVariable("id") String id,Account account) throws Exception{
 		String result = null;
 		try {
-			log.info("id==>"+id);
 			log.info("account==>"+account.toString());
 			account.setId(id);
 			if(account.getName() != null || account.getEmail() != null) {
 				service.updateUsers(account);				
 			}
+			if(account.getAttach().isEmpty()) {
+				log.info("파일 선택하지 않음 ");
+			}else {
 			String fileName = account.getNo() + ".jpg";
-			if (isWindows()==true) {
-				account.getAttach().transferTo(new File("c:/board/upload/profile/" + fileName));
-			} else if (isMac()==true) {
-				account.getAttach().transferTo(new File("/Users/board/upload/profile/" + fileName));
+				if (isWindows()==true) {
+					account.getAttach().transferTo(new File("c:/board/upload/profile/" + fileName));
+				} else if (isMac()==true) {
+					account.getAttach().transferTo(new File("/Users/board/upload/profile/" + fileName));
+				}
 			}
 			result = "success";
 		}catch (Exception e) {
@@ -106,6 +109,14 @@ public class UserController {
 			return result;
 		}
 	}
+	
+	//회원 상세조회
+	@ResponseBody
+	@GetMapping("{id}")
+	public Account detailUsers(@PathVariable("id") String id){
+		return service.detailUsers(id);
+	}
+	
 	// 아이디 중복검사
 	@ResponseBody
 	@GetMapping("register/{id}")

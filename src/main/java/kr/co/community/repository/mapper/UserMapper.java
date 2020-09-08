@@ -13,7 +13,7 @@ public interface UserMapper {
 	
     int idCheck(String id);
 
-    Account loginAccount(Account account);
+    Account detailUsers(String id);
     
     void registerAccount(Account account);
 

@@ -190,7 +190,7 @@
                     <div class="card-body">
                      <div id="userImg" class="pull-left">
                         <!-- User Image -->
-                        <img id="img_modify" data-no="${account.no}" src="/local_images/${account.no}.jpg" onerror="this.src='/local_images/default.jpg'" class="img-circle" alt="User Image">
+                        <img id="img_modify" data-no="${account.no}" src="/local_images/${account.no}.jpg" onerror="this.src='/local_images/default.jpg'" class="img-circle proImg" alt="User Image">
                         <input id="user_imgUpload" type="file" name="attach" style="display:none";>
                       </div>
                     <div class="profile-user-info">

@@ -42,7 +42,7 @@
         where id = #{id}
     </select>
 
-    <select id="loginAccount" parameterType="account" resultType="account">
+    <select id="detailUsers" parameterType="String" resultType="account">
     select *
         from tb_account
         where id = #{id}

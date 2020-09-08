@@ -1,6 +1,7 @@
 let userName;
 let userEmail;
 let modifyInfoExit = false;
+let globalImg;
 const regExpEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/; 
 
 
@@ -8,7 +9,8 @@ $(document).on('click', '#myPage_btn', (e) => {
 	$('#modal').removeClass().addClass('one');
     $('body').css('overflow', 'hidden');
 	$('html').css('overflow', 'hidden');
-	myPage.changInfoCancle();
+	myPage.changInfoProcess();
+	myPage.imgReset();
 	setTimeout(() => {
 		$('#board_paging').find('.active').attr('class','paginate_button').addClass('pagination_li');
 	}, 700);
@@ -38,16 +40,20 @@ function readURL(input) {
 	if (input.files && input.files[0]) {
 		let reader = new FileReader();
 		reader.onload = function(e) {
+			globalImg = e.target.result;
 			$('#img_modify').attr('src', e.target.result);
 		}
 		reader.readAsDataURL(input.files[0]);
 	}
 }
 
-$('#user_imgUpload').change(function() {
+//$('#user_imgUpload').change(function() {
+//	readURL(this);
+//});
+
+$(document).on('change','#user_imgUpload',function(){
 	readURL(this);
 });
-
 
 $(document).on('click','#modify_btn',()=>{
 	myPage.changInfoForm();
@@ -66,7 +72,7 @@ $(document).on('click','#modifySuccess_btn',()=>{
 	form.append('name',$('#userInputName').val() == '' ? userName : $('#userInputName').val());
 	form.append('email',$('#userInputEmail').val() == '' ? userEmail : $('#userInputEmail').val());
 	
-	$('.proImg').attr('src', '');
+	$('.proImg').attr('src', globalImg);
 	
 	$.ajax({
 		url: '/users/' + $('#userId').text(),
@@ -76,25 +82,34 @@ $(document).on('click','#modifySuccess_btn',()=>{
 	    processData: false,
 	    contentType: false,
 	    cache: false,
+	    async: false
 	}).done(function (result) {
 		if(result=='success'){
-			setTimeout(() => {
-				$('.proImg').attr('src', '/local_images/'+$('#img_modify').data("no")+'.jpg');
-				swal('수정되었습니다.');
-			}, 50);			
+			swal('수정되었습니다.');
+			let userDt = myPage.selectDetail();
+			myPage.changInfoProcess();
+			$("#userName").empty().text(userDt.name);
+			$("#userEmail").empty().text(userDt.email);
+			
+					
 		}else{
 			swal('수정중 오류발생');
 		}
 		
 	});
 	
+	setTimeout(() => {
+		$('.proImg').attr('src', '/local_images/'+$('#img_modify').data('no')+'.jpg?');
+	}, 50);	
+	
 	
 });
 
 $(document).on('click','#modifyCancle_btn',()=>{
-	myPage.changInfoCancle();
-	$("#userName").empty().text(userName);
-	$("#userEmail").empty().text(userEmail);
+	myPage.changInfoProcess();
+	myPage.imgReset();
+	$('#userName').empty().text(userName);
+	$('#userEmail').empty().text(userEmail);
 });
 
 $(document).on('click','#modifyPass_btn',()=>{
@@ -109,15 +124,15 @@ $('#img_modify')
 function dragOver(e){
   e.stopPropagation();
   e.preventDefault();
-  if (e.type == "dragover") {
+  if (e.type == 'dragover') {
       $(e.target).css({
-          "background-color": "black",
-          "outline-offset": "-20px"
+          'background-color': 'black',
+          'outline-offset': '-20px'
       });
   } else {
       $(e.target).css({
-          "background-color": "gray",
-          "outline-offset": "-10px"
+          'background-color': 'gray',
+          'outline-offset': '-10px'
       });
   }
 }
@@ -180,14 +195,27 @@ let myPage = {
 			
 		  modifyInfoExit = false;
 	 },
-	 changInfoCancle : () =>{
+	 changInfoProcess : () =>{
+		 
 		 $('#img_modify').removeClass('img_modify');
 		 $('#modify_btn').show();
 		 $('#modifyPass_btn').show();
 		 $('#modifySuccess_btn').hide();
 	     $('#modifyCancle_btn').hide();
-		 $('#img_modify').attr('src', '/local_images/'+$('#img_modify').data("no")+'.jpg');
-
+	 },
+	 imgReset : () =>{
+		 $('#img_modify').attr('src', '/local_images/'+$('#img_modify').data("no")+'.jpg');		 
+	 },
+	 selectDetail : () =>{
+		 let value = '';
+		 $.ajax({
+				url: '/users/' + $('#userId').text(),
+				type:'get',
+				async: false
+			}).done(function (result) {
+				value = result
+			});
+				return value;		 
 	 }
 }
 

@@ -37,10 +37,6 @@ public class UserServiceImpl implements UserService{
         return mapper.idCheck(id);
     }
 
-    @Override
-    public Account loginAccount(Account account) {
-        return mapper.loginAccount(account);
-    }
 
 	@Override
 	public void registerAccount(Account account) throws Exception{
@@ -99,6 +95,11 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void updateUsers(Account account) throws Exception {
 		mapper.updateUsers(account);
+	}
+
+	@Override
+	public Account detailUsers(String id) {
+		return mapper.detailUsers(id);
 	}
 
 

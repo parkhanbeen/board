@@ -101,7 +101,7 @@ $(document).on('click','#modifySuccess_btn',()=>{
 	});
 	
 	setTimeout(() => {
-		$('.proImg').attr('src', '/local_images/'+$('#img_modify').data('no')+'.jpg?');
+		$('.proImg').attr('src', '/local_images/'+$('#img_modify').data('no')+'.jpg?'+ Math.random());
 	}, 50);	
 	
 	

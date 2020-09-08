@@ -113,8 +113,11 @@ public class UserController {
 	//회원 상세조회
 	@ResponseBody
 	@GetMapping("{id}")
-	public Account detailUsers(@PathVariable("id") String id){
-		return service.detailUsers(id);
+	public Account detailUsers(@PathVariable("id") String id,HttpServletRequest request){
+		HttpSession session = request.getSession();
+		Account user = service.detailUsers(id);
+		session.setAttribute("account", user);
+		return user;
 	}
 	
 	// 아이디 중복검사

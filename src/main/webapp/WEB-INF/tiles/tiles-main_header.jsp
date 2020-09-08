@@ -123,7 +123,7 @@
               <!-- The user image in the navbar-->
               <img id="headImg" src="/local_images/${account.no}.jpg" onerror="this.src='/local_images/default.jpg'" class="user-image proImg" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">${account.name}</span>
+              <span class="hidden-xs disName">${account.name}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->

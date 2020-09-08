@@ -87,10 +87,12 @@ $(document).on('click','#modifySuccess_btn',()=>{
 		if(result=='success'){
 			swal('수정되었습니다.');
 			let userDt = myPage.selectDetail();
+			userName = userDt.name;
+			userEmail = userDt.email;
 			myPage.changInfoProcess();
-			$("#userName").empty().text(userDt.name);
-			$("#userEmail").empty().text(userDt.email);
-			
+			$('.disName').empty().text(userName);
+			$('#userName').empty().text(userName);
+			$('#userEmail').empty().text(userEmail);
 					
 		}else{
 			swal('수정중 오류발생');

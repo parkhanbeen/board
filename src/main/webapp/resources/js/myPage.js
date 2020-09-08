@@ -2,6 +2,8 @@ let userName;
 let userEmail;
 let modifyInfoExit = false;
 let globalImg;
+let changePassExit;
+const alphaDigit= 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 const regExpEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/; 
 
 
@@ -114,8 +116,9 @@ $(document).on('click','#modifyCancle_btn',()=>{
 	$('#userEmail').empty().text(userEmail);
 });
 
+//비밀번호 변경
 $(document).on('click','#modifyPass_btn',()=>{
-	
+	myPage.changePasswordForm();
 });
 
 $('#img_modify')
@@ -204,6 +207,8 @@ let myPage = {
 		 $('#modifyPass_btn').show();
 		 $('#modifySuccess_btn').hide();
 	     $('#modifyCancle_btn').hide();
+	     $('#myPageForm').show();
+		 $('#passwordForm').hide();
 	 },
 	 imgReset : () =>{
 		 $('#img_modify').attr('src', '/local_images/'+$('#img_modify').data("no")+'.jpg');		 
@@ -218,7 +223,69 @@ let myPage = {
 				value = result
 			});
 				return value;		 
+	 },
+	 changePasswordForm : () =>{
+		 $('#myPageForm').hide();
+		 $('#passwordForm').show();
+		 
+		 $(document).on('click','#passChangeCancle_btn',()=>{
+				myPage.changInfoProcess();
+				myPage.imgReset();
+				
+				$('.passwordInput').val('');
+		});
+		 
+		 $(document).on('click','#passChange_btn',()=>{
+				myPage.changePassword();
+		});
+	 },
+	 changePassword : () =>{
+		 
+		 let passInputId = ['currentPass','resetpass','confirmResetpass']
+		 for(let i=0;i<3;i++){
+			 myPage.passValidate(passInputId[i]);
+			 if(changePassExit){
+				 return;
+			 }
+		 }
+		 
+	 },
+	 passValidate : (password) =>{
+		 if(!$('#'+password).val()){
+		    	swal($('#'+password).attr('placeholder'));		
+		    	changePassExit = true;
+		    	$('#'+password).focus();
+		    	return;
+			}
+		    if ($('#'+password).val().length < 4) {
+		    	swal("비밀번호는 4자리 이상 입력하셔야 합니다.");
+		    	$('#'+password).val('');
+		    	$('#'+password).focus();
+		    	changePassExit = true;
+		        return;
+		        }
+		    
+		    if ($('#'+password).val().indexOf(" ") >= 0) {
+		    	swal("비밀번호에는 공백이 들어가면 안됩니다.");
+		    	$('#'+password).val('');
+		        $('#'+password).focus();
+		        changePassExit = true;
+		        return;
+		        }
+		    
+		    for (i=0; i<$('#'+password).val().length; i++) {
+		        if (alphaDigit.indexOf($('#'+password).val().substring(i, i+1)) < 0) {
+		        swal('비밀번호는 영문과 숫자의 조합만 사용할 수 있습니다.');
+		    	$('#'+password).val('');
+		        $('#'+password).focus();
+		        changePassExit = true;
+		        return;
+		        } 
+		      }
+		    
+		    changePassExit = false;
 	 }
+	 
 }
 
 

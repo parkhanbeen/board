@@ -181,7 +181,7 @@
 	c0.2,0.2,0.4,0.3,0.7,0.3c0.3,0,0.5-0.1,0.7-0.3C23.8,23,23.8,22.3,23.4,21.9z"/>  
                 </svg>
             </a>
-            <div class="card card-primary">
+            <div id="myPageForm" class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">My Page</h3>
                 </div>
@@ -220,6 +220,33 @@
                         <button type="button" id="modifyPass_btn" class="btn btn-primary">비밀번호 변경</button>
                     </div>
                 </form>
+            </div>
+            <div id="passwordForm" class="card card-primary" style="display:none;">
+                <div class="card-header">
+                    <h3 class="card-title">Change Password</h3>
+                </div>
+
+                    <div class="card-body">
+                    <div class="">
+                      <div class="passwordDiv">                
+						<div class="passwordTitle">Current Password</div>
+						<div id="userCurrentPass" class=""><input id="currentPass" class="passwordInput" type="password" placeholder="현재 비밀번호를 입력하세요."></div>					    
+					  </div>
+					  <div class="passwordDiv">                
+						<div class="passwordTitle">Reset password</div>
+						<div id="userResetpass" class=""><input id="resetpass" class="passwordInput" type="password" placeholder="변경할 비밀번호를 입력하세요."></div>					    
+					  </div>
+					  <div class="passwordDiv">                
+						<div class="passwordTitle">Confirm Reset password</div>
+						<div id="userConfirmResetpass" class=""><input id="confirmResetpass" class="passwordInput" type="password" placeholder="변경할 비밀번호를 다시 입력하세요."></div>					    
+					  </div>
+					</div>
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" id="passChange_btn" class="btn btn-primary">수정</button>
+                        <button type="button" id="passChangeCancle_btn" class="btn btn-danger">취소</button>
+                    </div>
             </div>
         </div>
     </div>

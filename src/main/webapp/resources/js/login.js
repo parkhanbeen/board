@@ -9,11 +9,22 @@ $(document).on('click', '.openModal', (e) => {
 	  forgot.openModal(e);     
 });
 
+document.addEventListener('keypress', function(event) {
+    if (event.keyCode == 13) {
+    	login.validation();
+        if(loginExit){
+        	return;
+        }
+        login.login();
+    }
+})
+
+
 $('.message a').click( () =>{
-	  $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+	  $('form').animate({height: 'toggle', opacity: 'toggle'}, 'slow');
 	});
 
-$(document).on("click", "#login_Btn", () => {
+$(document).on('click', '#login_Btn', () => {
     login.validation();
     if(loginExit){
     	return;
@@ -30,16 +41,16 @@ $(document).on('click', '#findId_btn' ,'#findPass_btn', () => {
 	    }
 });
 
-$(document).on('keyup', ".login_txt", () => {
+$(document).on('keyup', '.login_txt', () => {
     login.hideMsg();
 });
 
-$(document).on("keyup", "#id_reg", () => {
+$(document).on('keyup', '#id_reg', () => {
 	let idCh = $('#id_reg').val();
 	register.IdCheck(idCh);
 });
 
-$(document).on("click", "#register_Btn", () => {
+$(document).on('click', '#register_Btn', () => {
 	if($('#result_reg_msg').find('p').css('color') == "rgb(253, 71, 43)"){
 		swal($('#result_reg_msg').find('p').text());
 		$('#id_reg').focus();
@@ -83,17 +94,17 @@ let register = {
 			};
 
 			$.ajax({
-				type: "post",
-				url: "/users/register",
+				type: 'post',
+				url: '/users/register',
 				data: JSON.stringify(param),
-				dataType: "json",
+				dataType: 'json',
 				contentType: 'application/json'
 			}).done(function (result) {
 				    if (result){
-				    	 swal("회원가입에 성공하였습니다.");
+				    	 swal('회원가입에 성공하였습니다.');
 				    	 $('#signIn_btn').trigger('click');
 					}else{
-						swal("회원가입에 실패하였습니다.");
+						swal('회원가입에 실패하였습니다.');
 						return;
 					}
 				});
@@ -101,7 +112,7 @@ let register = {
 		
 		validation : () =>{
 			if(!$('#id_reg').val()){
-				swal("아이디을 입력해주세요.");
+				swal('아이디을 입력해주세요.');
 				registerExit = true;
 				$('#id_reg').focus();
 				return;

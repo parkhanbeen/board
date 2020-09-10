@@ -15,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import com.google.gson.JsonObject;
+
 import kr.co.community.common.interceptor.CommonInterceptor;
 import kr.co.community.repository.vo.Account;
 import kr.co.community.user.service.UserService;
@@ -48,7 +50,7 @@ public class UserController {
 			return "login/login";  
 		}
 	
-
+    //로그인
 	@ResponseBody
 	@PostMapping("login")
 	public Boolean login(@RequestBody Account account, HttpServletRequest request, Model model) {
@@ -64,6 +66,7 @@ public class UserController {
 		return result;
 	}
 	
+	//회원가입
 	@SuppressWarnings("finally")
 	@ResponseBody
 	@PostMapping("register")
@@ -80,6 +83,7 @@ public class UserController {
 		}
 	}
 	
+	//회원 정보수정
 	@SuppressWarnings("finally")
 	@ResponseBody
 	@PostMapping("{id}")
@@ -145,6 +149,7 @@ public class UserController {
 		return findPass;
 	}
 	
+	// 로그아웃
 	@DeleteMapping("logout")
 	public void logout(HttpSession session) {
 		try {
@@ -153,6 +158,41 @@ public class UserController {
 			log.debug(e);
 		}
 	}
+	
+	// 비밀번호 변경
+	@ResponseBody
+	@PatchMapping(value = "{id}/password", produces = "application/text; charset=utf8")
+	public String changePassword(@PathVariable("id") String id, HttpServletRequest request, @RequestBody Map<String, String> update) {
+		
+		String msg = null;
+		String newPass = update.get("newPass");
+		String oldPass = update.get("oldPass");
+		
+		Account account = service.detailUsers(id);
+		
+		JsonObject obj =new JsonObject();
+		
+		if (passEncoder.matches(newPass, account.getPass()) == false) {
+			msg = "현재 비밀번호가 일치하지 않습니다.";
+		}else if(passEncoder.matches(oldPass, account.getPass())){
+			msg = "현재 비밀번호와 다른 새 비밀번호를 입력하세요.";
+	    }else {
+			account.setPass(oldPass);
+			
+			try {
+				service.updatePassword(account);
+				msg = "비빌번호가 변경되었습니다.";
+			} catch (Exception e) {
+				e.printStackTrace();
+				msg = "비빌번호 변경에 실패하였습니다.";
+			}
+		}
+		
+		obj.addProperty("msg", msg);
+		
+		return obj.toString();
+	}
+	
 	
 
 }

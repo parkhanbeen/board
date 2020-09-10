@@ -3,6 +3,7 @@ let userEmail;
 let modifyInfoExit = false;
 let globalImg;
 let changePassExit;
+const alphaDigits= 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 const regExpEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/; 
 
 
@@ -245,6 +246,25 @@ let myPage = {
 			 }
 		 }
 		 
+		 if(!$('#'+passInputId[1]).val() == $('#'+passInputId[2]).val()){
+			 swal('새 비밀번호와 새 비밀번호 확인이 일치하지 않습니다.');	
+			 return;
+		 }
+		 
+		 let chPassParam = {'newPass' : $('#'+passInputId[1]).val(),
+				            'oldPass' : $('#'+passInputId[2]).val()
+		                   }
+		 
+		 $.ajax({  
+				url: '/users/' + $('#userId').text() + '/password',
+				type:'patch',
+				data: JSON.stringify(chPassParam),
+				dataType : 'json',
+				contentType: 'application/json'
+			}).done(function (result) {
+				console.log(result);
+			});
+		 
 	 },
 	 passValidate : (password) =>{
 		 if(!$('#'+password).val()){
@@ -270,7 +290,7 @@ let myPage = {
 		        }
 		    
 		    for (i=0; i<$('#'+password).val().length; i++) {
-		        if (alphaDigit.indexOf($('#'+password).val().substring(i, i+1)) < 0) {
+		        if (alphaDigits.indexOf($('#'+password).val().substring(i, i+1)) < 0) {
 		        swal('비밀번호는 영문과 숫자의 조합만 사용할 수 있습니다.');
 		    	$('#'+password).val('');
 		        $('#'+password).focus();

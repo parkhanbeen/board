@@ -37,6 +37,15 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 	    <artifactId>jackson-annotations</artifactId>
 	    <version>${jackson-version}</version>
 	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+	<dependency>
+	    <groupId>com.google.code.gson</groupId>
+	    <artifactId>gson</artifactId>
+	    <version>2.8.5</version>
+	</dependency>
+
+	
     
     <!-- springframework -->
 		<dependency>

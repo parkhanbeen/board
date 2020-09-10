@@ -234,11 +234,11 @@
 					  </div>
 					  <div class="passwordDiv">                
 						<div class="passwordTitle">Reset password</div>
-						<div id="userResetpass" class=""><input id="resetpass" class="passwordInput" type="password" placeholder="변경할 비밀번호를 입력하세요."></div>					    
+						<div id="userResetpass" class=""><input id="resetpass" class="passwordInput" type="password" placeholder="새 비밀번호를 입력하세요."></div>					    
 					  </div>
 					  <div class="passwordDiv">                
 						<div class="passwordTitle">Confirm Reset password</div>
-						<div id="userConfirmResetpass" class=""><input id="confirmResetpass" class="passwordInput" type="password" placeholder="변경할 비밀번호를 다시 입력하세요."></div>					    
+						<div id="userConfirmResetpass" class=""><input id="confirmResetpass" class="passwordInput" type="password" placeholder="새 비밀번호를 다시 입력하세요."></div>					    
 					  </div>
 					</div>
 

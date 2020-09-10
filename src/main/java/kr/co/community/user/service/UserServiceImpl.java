@@ -103,4 +103,11 @@ public class UserServiceImpl implements UserService{
 	}
 
 
+	@Override
+	public void updatePassword(Account account) throws Exception {
+		account.setPass(passEncoder.encode(account.getPass()));
+		mapper.updatePass(account);
+	}
+
+
 }

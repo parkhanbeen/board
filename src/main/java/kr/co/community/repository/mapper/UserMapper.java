@@ -19,4 +19,6 @@ public interface UserMapper {
 
     void updateUsers(Account account);
 
+	void withdraw(String id);
+
 }

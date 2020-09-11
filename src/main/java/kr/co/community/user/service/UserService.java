@@ -23,4 +23,6 @@ public interface UserService {
     
     void updatePassword(Account account) throws Exception;
 
+	void withdraw(String id) throws Exception;
+
 }

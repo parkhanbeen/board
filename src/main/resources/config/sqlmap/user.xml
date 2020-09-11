@@ -29,6 +29,12 @@
        where id = #{id}
     </update>
     
+     <update id="withdraw" parameterType="String">
+    update tb_account
+      set resignation = "y"
+       where id = #{id}    
+    </update>
+    
 	<select id="idInquiry" parameterType="account" resultType="String">
     select id
         from tb_account

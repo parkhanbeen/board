@@ -161,7 +161,7 @@ public class UserController {
 	// 비밀번호 변경
 	@ResponseBody
 	@PatchMapping(value = "{id}/password", produces = "application/text; charset=utf8")
-	public String changePassword(@PathVariable("id") String id, HttpServletRequest request, @RequestBody Map<String, String> update) {
+	public String changePassword(@PathVariable("id") String id, @RequestBody Map<String, String> update) {
 		
 		String msg = null;
 		String newPass = update.get("newPass");
@@ -191,6 +191,19 @@ public class UserController {
 		
 		return obj.toString();
 	}
+	
+	// 탈퇴
+    @DeleteMapping
+    public void withdraw(HttpSession session) {
+    	Account user = (Account)session.getAttribute("account");
+    	log.info(user.toString());
+    	try {
+			service.withdraw(user.getId());
+			service.logout(session);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    }
 	
 	
 

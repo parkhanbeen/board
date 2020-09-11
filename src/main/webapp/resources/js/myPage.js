@@ -251,7 +251,7 @@ let myPage = {
 			 return;
 		 }
 		 
-		 let chPassParam = {'newPass' : $('#'+passInputId[1]).val(),
+		 let chPassParam = {'newPass' : $('#'+passInputId[0]).val(),
 				            'oldPass' : $('#'+passInputId[2]).val()
 		                   }
 		 
@@ -262,8 +262,11 @@ let myPage = {
 				dataType : 'json',
 				contentType: 'application/json'
 			}).done(function (result) {
-				console.log(result);
+				swal(result.msg);
 			});
+		 setTimeout(() => {
+			 $('#passChangeCancle_btn').trigger('click');			
+		}, 500);
 		 
 	 },
 	 passValidate : (password) =>{

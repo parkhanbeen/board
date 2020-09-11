@@ -90,7 +90,6 @@ public class UserController {
 	public String updateUsers(@PathVariable("id") String id,Account account) throws Exception{
 		String result = null;
 		try {
-			log.info("account==>"+account.toString());
 			account.setId(id);
 			if(account.getName() != null || account.getEmail() != null) {
 				service.updateUsers(account);				
@@ -172,9 +171,9 @@ public class UserController {
 		
 		JsonObject obj =new JsonObject();
 		
-		if (passEncoder.matches(newPass, account.getPass()) == false) {
+		if (passEncoder.matches(newPass,account.getPass()) == false) {
 			msg = "현재 비밀번호가 일치하지 않습니다.";
-		}else if(passEncoder.matches(oldPass, account.getPass())){
+		}else if(passEncoder.matches(oldPass,account.getPass())){
 			msg = "현재 비밀번호와 다른 새 비밀번호를 입력하세요.";
 	    }else {
 			account.setPass(oldPass);

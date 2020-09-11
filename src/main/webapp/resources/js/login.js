@@ -33,7 +33,8 @@ $(document).on('click', '#login_Btn', () => {
     
 });
 
-$(document).on('click', '#findId_btn' ,'#findPass_btn', () => {
+
+$(document).on('click','#findPass_btn', '#findId_btn', () => {
 	$('#find_result').css('display','none');
 	login.findValid();
 	 if(findExit){
@@ -51,7 +52,7 @@ $(document).on('keyup', '#id_reg', () => {
 });
 
 $(document).on('click', '#register_Btn', () => {
-	if($('#result_reg_msg').find('p').css('color') == "rgb(253, 71, 43)"){
+	if($('#result_reg_msg').find('p').css('color') == 'rgb(253, 71, 43)'){
 		swal($('#result_reg_msg').find('p').text());
 		$('#id_reg').focus();
 		return;

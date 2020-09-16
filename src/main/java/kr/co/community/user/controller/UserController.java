@@ -193,16 +193,16 @@ public class UserController {
 	}
 	
 	// 탈퇴
-    @DeleteMapping
-    public void withdraw(HttpSession session) {
-    	Account user = (Account)session.getAttribute("account");
-    	log.info(user.toString());
+    @DeleteMapping("{id}")
+    public void withdraw(@PathVariable("id") String id,HttpSession session) {
     	try {
-			service.withdraw(user.getId());
+			service.withdraw(id);
 			service.logout(session);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+    	
+    	
     }
 	
 	

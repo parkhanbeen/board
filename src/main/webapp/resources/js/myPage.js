@@ -118,6 +118,12 @@ $(document).on('click','#modifyPass_btn',()=>{
 	myPage.changePasswordForm();
 });
 
+//회원 탈퇴
+$(document).on('click','#modifyWithdraw_btn',()=>{
+	myPage.withdraw();
+});
+
+
 $('#img_modify')
 .on('dragover', dragOver)
 .on('dragleave', dragOver)
@@ -182,6 +188,7 @@ let myPage = {
 	     $('#modifyCancle_btn').show();
 	     $('#modify_btn').hide();
 	     $('#modifyPass_btn').hide();
+	     $('#modifyWithdraw_btn').hide();
 	 },
 	 
 	 changInfoValid : () =>{
@@ -206,6 +213,7 @@ let myPage = {
 	     $('#modifyCancle_btn').hide();
 	     $('#myPageForm').show();
 		 $('#passwordForm').hide();
+		 $('#modifyWithdraw_btn').show();
 	 },
 	 imgReset : () =>{
 		 $('#img_modify').attr('src', '/local_images/'+$('#img_modify').data("no")+'.jpg');		 
@@ -303,6 +311,24 @@ let myPage = {
 		      }
 		    
 		    changePassExit = false;
+	 },
+	 withdraw : () =>{
+		 $.ajax({  
+				url: '/users/' + $('#userId').text(),
+				type:'delete'
+			});
+		 	swal({
+				text : '탈퇴 되었습니다.',
+				icon : 'info',
+				confirm : {
+					text : '확인',
+					value : true
+				}
+				}).then((result)=>{
+					if(result){
+						location.href="/users/login";										
+					}
+				});
 	 }
 	 
 }

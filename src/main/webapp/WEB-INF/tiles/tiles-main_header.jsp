@@ -218,6 +218,7 @@
                         <button type="button" id="modifySuccess_btn" class="btn btn-primary" style="display:none">수정완료</button>
                         <button type="button" id="modifyCancle_btn" class="btn btn-danger" style="display:none">취소</button>
                         <button type="button" id="modifyPass_btn" class="btn btn-primary">비밀번호 변경</button>
+                        <button type="button" id="modifyWithdraw_btn" class="btn btn-danger">탈퇴</button>
                     </div>
                 </form>
             </div>

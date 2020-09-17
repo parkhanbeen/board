@@ -9,12 +9,14 @@
         where    id = #{id}
           and  name = #{name}
           and email = #{email}
+          and resignation = "n"
     </select>
     
     <update id="updatePass" parameterType="account">
     update tb_account
       set pass = #{pass}
-       where no = #{no}    
+       where no = #{no}
+         and resignation = "n"    
     </update>
 
     <update id="updateUsers" parameterType="account">
@@ -27,12 +29,14 @@
 	          name  = #{name}
 	      </if>    
        where id = #{id}
+         and resignation = "n"
     </update>
     
      <update id="withdraw" parameterType="String">
     update tb_account
       set resignation = "y"
-       where id = #{id}    
+       where id = #{id}   
+        and resignation = "n" 
     </update>
     
 	<select id="idInquiry" parameterType="account" resultType="String">
@@ -40,18 +44,21 @@
         from tb_account
         where name = #{name}
           and email = #{email}
+           and resignation = "n"
     </select>
     
 	<select id="idCheck" parameterType="String" resultType="int">
     select count(id)
         from tb_account
         where id = #{id}
+         and resignation = "n"
     </select>
 
     <select id="detailUsers" parameterType="String" resultType="account">
     select *
         from tb_account
         where id = #{id}
+         and resignation = "n"
     </select>
     
     <insert id="registerAccount" parameterType="account">

@@ -24,7 +24,7 @@
     <!-- Main content -->
     <section class="content container-fluid">
 
-     <div id="detail_con">
+   <div id="detail_con">
     <table id="detail_table">
         <tr>
             <td>글번호:</td>
@@ -48,10 +48,12 @@
         </tr>
         
     </table>
+    <c:if test="${board.no eq sessionScope.account.no}">
      <button data-no="${board.no }" class="detail_btn" id="detail_update_btn">수정</button>
      <button class="detail_btn" id="detail_delete_btn">삭제</button>
+    </c:if>
      <button data-pageNo="${b.pageNo }" data-search="${b.search }" data-word="${b.word }" class="detail_btn" id="detail_list_btn">목록</button>
-</div>
+   </div>
 
     </section>
   </div>
